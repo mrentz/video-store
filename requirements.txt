@@ -1,0 +1,74 @@
+We want to create a Video store rails application,
+it will have both a Public side and an Admin system to maintain.
+
+The public side should display a simple home page listing the top 5 (by rating) recent videos released,
+it should display basic details e.g. thumbnail, title, description(trucated), content rating (PG, M …),
+user rating (stars), Actors, release date.
+Selecting a video should take the user to a more complete view of the video details,
+it should also list three recommendations based on similar theme(s) (Horror, Comedy etc.),
+similar actor(s) and content rating.
+In that order of preference, for example if there is a matching video with the same theme(s), similar actors and the same content rating it should be the first listed before a matching video on similar actors only.
+
+There should be a search area on the home page,
+the text input should search for videos with matching titles or descriptions or actor names using a full-text search method (ElasticSearch).
+It should also have a selector for content rating and the minimum average user rating.
+
+The public side should be pretty straight forward and the tutorial teaches you how to output basic html pages, I will go into a bit of detail here for how the admin should work.
+
+Members will be required to login if they want to rent or request a notification for a Video copy.
+The video screen should allow a logged in member to rent a Video (selecting the type),
+if there are no available copies of that type they should be given the option to receive an automated email when there is stock of that type.
+
+There should be users and they need to have different access levels to control what they can do,
+a normal user can view/add/edit videos/actors,
+an admin user can view/add/edit/delete users(not super)/videos and actors,
+a super user can do all include see/edit super users.
+Videos should have children copies which can be of different types (‘DVD’, ‘Blu-ray’, ‘VHS’),
+there should be a rented date field, a barcode number to identify the copy.
+Members should have a list of rentals (with the latest displayed at the top),
+it should list the type of copy, the barcode, and the Video name,
+it should have a status column of the rented date (warning if close to a week, overdue if over a week), returned date.
+
+THE GEMS WE MAKE USE OF:
+
+    Devise
+    Cancancan
+    Sidekiq
+    carrierwave
+    rspec
+    capybara
+    factory girl
+    database cleaner
+    paranoia
+    classy_enum
+    has_scope
+    simple_form
+    nested_form
+    kaminari
+    money-rails
+    userstamp (activerecord-userstamp)
+    activerecord-userstamp
+    blaknite/pure-admin-rails
+    blaknite/crummy
+    font awesome
+
+
+Postgres for database and ActiveRecord.
+
+MVI STANDARDS FOR DISPLAY
+
+Lists should not contain the action buttons,
+we instead prefer these are run from the show screen.
+All actions should be available from the show screen,
+some of these may be reflected in the list but special consideration should be made to decide if they are useful as direct click.
+Something like delete should generally be via the show screen so the content can be confirmed.
+The most descriptive column (generally name) should be a link to the show screen,
+generally good for relations also.
+    CSV should contain all columns of the model minus special columns (id, archiving, sort order)
+    The name of the object should display as the title for the show page
+    Breadcrumbs displayed should not show the id
+    Dates should be displayed in DD MMM YYYY format
+    Children of a parent object (e.g. Branch on a company) should only be created from that company, in order to do this you will need to use nested resources defining the routes in routes.rb so the child resource is below the parent.
+    List of child objects should have a column linking to the child show page.
+
+MAKE SURE CODE HAS RELEVANT SPEC TESTS WRITTEN TO TEST IT IS WORKING CORRECTLY.
