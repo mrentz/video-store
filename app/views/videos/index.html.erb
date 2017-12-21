@@ -2,9 +2,10 @@
 
 <% @videos.each do |video| %>
 
-<%= link_to image_tag(video[:thumbnail], :size => "67x98", alt: "image missing"), 'http://www.imdb.com/title/tt0088247/' %>
+<%= link_to image_tag(video[:thumbnail],
+    :size => "67x98", alt: "image missing"), 'http://www.imdb.com/title/tt0088247/' %>
 <%= link_to video[:title], '#' %>
 
-</br>
+</br></br>
 
 <% end %>
