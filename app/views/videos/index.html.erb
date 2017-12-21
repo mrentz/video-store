@@ -1,3 +1,10 @@
 <h1>Current Hit Videos</h1>
-<p>Find me in app/views/videos/index.html.erb</p>
-<%= link_to image_tag("https://images-na.ssl-images-amazon.com/images/M/MV5BODE1MDczNTUxOV5BMl5BanBnXkFtZTcwMTA0NDQyNA@@._V1_UX182_CR0,0,182,268_AL_.jpg", alt: "image missing"), 'http://www.imdb.com/title/tt0088247/' %>
+
+<% @videos.each do |video| %>
+
+<%= link_to image_tag(video[:thumbnail], :size => "67x98", alt: "image missing"), 'http://www.imdb.com/title/tt0088247/' %>
+<%= link_to video[:title], '#' %>
+
+</br>
+
+<% end %>
