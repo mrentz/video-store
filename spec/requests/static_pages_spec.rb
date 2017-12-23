@@ -3,11 +3,75 @@ require 'rails_helper'
 
 describe "Static pages" do
 
-  describe "Home page" do
+  let(:base_title) { "Matthews Video Store Sample App" }
 
+  describe "Home page" do
+    it "should have the h1 'Home'" do
+      visit '/'
+      expect(page).to have_selector('h1', :text => 'Home')
+    end
+    
+    it "should have the title 'Home'" do
+      visit '/'
+      expect(page).to have_selector('title',
+                        :text => base_title)
+    end
+    
     it "should have the content 'Home'" do
       visit '/'
-      page.should have_content('Home')
+      expect(page).to have_selector('header')
+      expect(page).to have_selector('body')
+      expect(page).to have_selector('title')
+      expect(page).to have_selector('html')
+      expect(page).to have_selector('small')
+      expect(page).to have_selector('nav')
+      expect(page).to have_selector('p')
+    end
+
+    it "should have the h1 'Help'" do
+      visit '/help'
+      expect(page).to have_selector('h1', :text => 'Help')
+    end
+
+    it "should have the title 'Help'" do
+      visit '/help'
+      expect(page).to have_selector('title', :text => "#{base_title} | Help")
+    end
+    
+    it "should have the h1 'About'" do
+      visit '/about'
+      expect(page).to have_selector('h1', :text => 'About')
+    end
+
+    it "Homepage should have the content 'Help'" do
+      visit '/'
+      expect(page).to have_content('Help')
+    end
+  end
+
+  describe "About page" do
+
+    it "Homepage should have the content 'About'" do
+      visit '/'
+      expect(page).to have_content('About')
+    end
+  end
+
+  describe "Contact page" do
+
+    it "Homepage should have the content 'Contact'" do
+      visit '/'
+      expect(page).to have_content('Contact')
+    end
+  end
+
+  describe "Video page" do
+
+    it "Homepage should have the content 'Video'" do
+      visit '/'
+      expect(page).to have_content('Videos')
+      click_link "Video"
+      expect(page).to have_selector('title', :text => base_title)
     end
   end
 end

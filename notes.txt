@@ -1,0 +1,5 @@
+
+
+***** Testing ******
+Setup for Rspec Capybara
+https://stackoverflow.com/questions/15148585/undefined-method-visit-when-using-rspec-and-capybara-in-rails
