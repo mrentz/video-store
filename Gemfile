@@ -29,11 +29,14 @@ group :development do
 end
 
 group :test do
-  gem "factory_girl_rails"
+  gem "factory_bot_rails"
   gem "capybara"
   gem 'rb-inotify'
   gem 'libnotify'
-gem "guard-rspec"
+  gem "guard-rspec"
+  gem "guard-spork"
+  gem 'childprocess'
+  gem 'spork'
 end
 
 group :production do

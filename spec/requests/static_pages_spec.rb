@@ -3,29 +3,38 @@ require 'rails_helper'
 
 describe "Static pages" do
 
+  def confirm(p)
+      expect(page).to have_selector(p)
+  end
+  
   let(:base_title) { "Matthews Video Store Sample App" }
-
+  subject { page }
+  
   describe "Home page" do
+    before { visit root_path }
+    it { is_expected.to have_selector('h1', :text => 'Home') }
+    it { is_expected.to have_selector('title',
+                                      :text => base_title) }
+
     it "should have the h1 'Home'" do
-      visit '/'
-      expect(page).to have_selector('h1', :text => 'Home')
+            expect(page).to have_selector('h1', :text => 'Home')
     end
     
     it "should have the title 'Home'" do
       visit '/'
       expect(page).to have_selector('title',
-                        :text => base_title)
+                                    :text => base_title)
     end
     
     it "should have the content 'Home'" do
       visit '/'
-      expect(page).to have_selector('header')
-      expect(page).to have_selector('body')
-      expect(page).to have_selector('title')
-      expect(page).to have_selector('html')
-      expect(page).to have_selector('small')
-      expect(page).to have_selector('nav')
-      expect(page).to have_selector('p')
+      confirm('header')
+      confirm('body')
+      confirm('title')
+      confirm('html')
+      confirm('small')
+      confirm('nav')
+      confirm('p')
     end
 
     it "should have the h1 'Help'" do
