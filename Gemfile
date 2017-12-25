@@ -34,9 +34,9 @@ group :test do
   gem 'rb-inotify'
   gem 'libnotify'
   gem "guard-rspec"
-  gem "guard-spork"
+#  gem "guard-spork"
   gem 'childprocess'
-  gem 'spork'
+#  gem 'spork'
   gem 'shoulda-matchers', '~> 3.0', require: false
   gem 'database_cleaner', '~> 1.5'
 end
