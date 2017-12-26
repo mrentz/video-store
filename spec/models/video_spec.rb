@@ -2,8 +2,10 @@
 
 require 'rails_helper'
 
-RSpec.describe Video, type: :model do
+describe Video do
+
   it "has a valid factory" do
-#    expect(video).to be_valid
-  end
+    FactoryBot.create(:video).should be_valid
+end
+  
 end
