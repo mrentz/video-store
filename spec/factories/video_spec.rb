@@ -25,8 +25,8 @@ FactoryBot.define do
     v.star_rating "8"
     v.actors "goog"
     v.release_date "wert"
-    #    v.imdbId "1234"
-    #    v.genre "action, adventure, romance, drama"
+#    v.imdbId "1234"
+#    v.genre "action, adventure, romance, drama"
     v.thumbnail "http:foo.com"
   end
 end

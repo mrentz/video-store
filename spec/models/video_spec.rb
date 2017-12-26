@@ -4,8 +4,12 @@ require 'rails_helper'
 
 describe Video do
 
+  before(:each) do
+    @video = FactoryBot.create(:video)
+  end
+  
   it "has a valid factory" do
-    FactoryBot.create(:video).should be_valid
+    expect(@video).to be_valid
 end
   
 end
