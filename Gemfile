@@ -40,6 +40,7 @@ group :test do
 #  gem 'spork'
   gem 'shoulda-matchers', '~> 3.0', require: false
   gem 'database_cleaner', '~> 1.5'
+  gem 'faker'
 end
 
 group :production do

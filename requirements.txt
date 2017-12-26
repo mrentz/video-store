@@ -1,7 +1,7 @@
-We want to create a Video store rails application,
+  * We want to create a Video store rails application,
 it will have both a Public side and an Admin system to maintain.
 
-The public side should display a simple home page listing the top 5 (by rating) recent videos released,
+  * The public side should display a simple home page listing the top 5 (by rating) recent videos released,
 it should display basic details e.g. thumbnail, title, description(truncated), content rating (PG, M …),
 user rating (stars), Actors, release date.
 Selecting a video should take the user to a more complete view of the video details,
@@ -35,10 +35,10 @@ THE GEMS WE MAKE USE OF:
     Cancancan
     Sidekiq
     carrierwave
-    rspec
-    capybara
-    factory girl
-    database cleaner
+  *  rspec
+  *  capybara
+  *  factory girl
+  *  database cleaner
     paranoia
     classy_enum
     has_scope
@@ -53,7 +53,7 @@ THE GEMS WE MAKE USE OF:
     font awesome
 
 
-Postgres for database and ActiveRecord.
+  *Postgres for database and ActiveRecord.
 
 MVI STANDARDS FOR DISPLAY
 

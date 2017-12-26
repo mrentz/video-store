@@ -10,6 +10,10 @@ describe Video do
   
   it "has a valid factory" do
     expect(@video).to be_valid
-end
+    puts @video.title
+    puts @video.description
+    puts @video.actors
+    puts @video.thumbnail
+  end
   
 end

@@ -1,4 +1,12 @@
 
+installed and configured Postgresql for development and test
+
+installed and configured test suite. Successfully implementing and applying
+    rspec
+    capybara
+    factory girl
+    database cleaner
+  
 
 ***** Testing ******
 Setup for Rspec Capybara

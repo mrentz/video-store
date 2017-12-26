@@ -18,16 +18,16 @@ require 'factory_bot'
 FactoryBot.define do
 
   factory :video do |v|
-    v.title "Foobar"
-    v.description "good show"
+    v.title { Faker::Name.title }
+    v.description { Faker::Lorem.sentence }
     v.content_rating "pg"
     v.user_rating "6"
     v.star_rating "8"
-    v.actors "goog"
-    v.release_date "wert"
+    v.actors { Faker::Name.name }
+    v.release_date { Date.yesterday }
 #    v.imdbId "1234"
 #    v.genre "action, adventure, romance, drama"
-    v.thumbnail "http:foo.com"
+    v.thumbnail { Faker::Internet.url }
   end
 end
 
