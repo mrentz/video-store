@@ -25,8 +25,7 @@ FactoryBot.define do
     v.star_rating "8"
     v.actors { Faker::Name.name }
     v.release_date { Date.yesterday }
-#    v.imdbId "1234"
-#    v.genre "action, adventure, romance, drama"
+    v.genre "action, adventure, romance, drama"
     v.thumbnail { Faker::Internet.url }
   end
 end
