@@ -24,8 +24,9 @@
 #  * zeus: 'zeus rspec' (requires the server to be started separately)
 #  * 'just' rspec: 'rspec'
 
-guard :rspec, cmd: "bundle exec rspec" do
+guard :rspec, all_after_pass: false, cmd: "bundle exec rspec" do
   require "guard/rspec/dsl"
+  require 'active_support/inflector'
   dsl = Guard::RSpec::Dsl.new(self)
 
   # Feel free to open issues for suggestions and improvements
@@ -35,7 +36,7 @@ guard :rspec, cmd: "bundle exec rspec" do
   watch(rspec.spec_helper) { rspec.spec_dir }
   watch(rspec.spec_support) { rspec.spec_dir }
   watch(%r{^spec/factories/(.+)\.rb$}) { rspec.spec_dir }
-  watch(rspec.spec_files)
+  watch(rspec.spec_files) { rspec.spec_dir }
 
   # Ruby files
   ruby = dsl.ruby
@@ -69,8 +70,10 @@ guard :rspec, cmd: "bundle exec rspec" do
     Dir[File.join("**/#{m[1]}.feature")][0] || "spec/acceptance"
   end
 
+  watch(%r{^app/views/(.+)/}) { "#{rspec.spec_dir}/requests" }
+  
   watch(%r{^app/views/(.+)/}) do |m|
     (m[1][/_pages/] ? "spec/requests/#{m[1]}_spec.rb" :
-                      "spec/requests/#{m[1].singularize}_pages_spec.rb")
+       "spec/requests/#{m[1].singularize}_pages_spec.rb")
   end
 end

@@ -3,8 +3,8 @@ require 'rails_helper'
 
 describe "Static pages" do
 
-  def confirm(p)
-      expect(page).to have_selector(p)
+  def confirm(html_tag)
+      expect(page).to have_selector(html_tag)
   end
   
   let(:base_title) { "Matthews Video Store Sample App" }
@@ -26,15 +26,15 @@ describe "Static pages" do
                                     :text => base_title)
     end
     
-    it "should have the content 'Home'" do
+    it "Homepage should contain all of the following tags" do
       visit '/'
-      confirm('header')
       confirm('body')
       confirm('title')
       confirm('html')
-      confirm('small')
-      confirm('nav')
       confirm('p')
+      confirm('li')
+      confirm('ul')
+      confirm('nav')
     end
 
     it "should have the h1 'Help'" do
