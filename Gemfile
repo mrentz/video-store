@@ -14,6 +14,7 @@ gem 'jquery-rails',   '4.3.1'
 gem 'turbolinks',     '5.0.1'
 gem 'jbuilder',       '2.7.0'
 gem 'bootstrap-sass', '3.3.7'
+gem 'autoprefixer-rails'
 gem 'pg', '0.18.4'
 gem 'byebug',  '9.0.6', platform: :mri
 
