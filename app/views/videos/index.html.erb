@@ -1,7 +1,10 @@
-<h1>Current Hit Videos</h1>
+<div class="row">
+  
+  <%= render 'partials/account_info' %>    
+  <%= render 'partials/carousel' %>    
+  <%= render 'partials/thumbnails' %>
+
+</br></br>
+</div>
 
 
-<% @videos.each do |top_5| %>
-     <% @top_5 = top_5 %>
-     <%= render partial: "partials/top_5", object: @top_5 %></br></br>
-<% end %>

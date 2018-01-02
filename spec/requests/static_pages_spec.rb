@@ -12,12 +12,12 @@ describe "Static pages" do
   
   describe "Home page" do
     before { visit root_path }
-    it { is_expected.to have_selector('h1', :text => 'Home') }
+    it { is_expected.to have_selector('h1', :text => 'Matthews Video Store') }
     it { is_expected.to have_selector('title',
                                       :text => base_title) }
 
     it "should have the h1 'Home'" do
-            expect(page).to have_selector('h1', :text => 'Home')
+            expect(page).to have_selector('h1', :text => 'Matthews Video Store')
     end
     
     it "should have the title 'Home'" do
