@@ -1,5 +1,10 @@
-#require 'spec_helper'
 require 'rails_helper'
+
+#................................................................
+# This is not a definitve test. This is purely investigating my
+# understanding of the tesing framework and Rspec and Capybara
+# methods.
+#................................................................
 
 describe "Static pages" do
 
@@ -8,6 +13,7 @@ describe "Static pages" do
   end
   
   let(:base_title) { "Matthews Video Store Sample App" }
+
   subject { page }
   
   describe "Home page" do
