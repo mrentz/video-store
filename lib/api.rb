@@ -1,21 +1,10 @@
 require 'net/http'
 require 'json'
 require 'stars'
+require 'imdbids'
 
 class Top5
-  
-  def self.getImdbIds
-    imdbIdElement = 4 #strip the imDb ID from the movie's url
-                      #(Haven't figured out any other way of doing it)
-    imdbIdArray = []
-    File.open("lib/top5ImdbVids.txt").readlines.each do |line|
-      vid = line.split('/')
-      imdbIdArray << vid[imdbIdElement]
-    end
-    return imdbIdArray
-  end
-
-def self.movieData
+  def self.movieData
     top5 = []
     getImdbIds.each do |id|
       apiTag = "http://www.omdbapi.com/?i=#{id}&apikey=da4134f5"
