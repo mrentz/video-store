@@ -19,7 +19,7 @@
 		  <span class="fa <%= star %>"></span>
 		  <% end %>
 		</div>
-		<span class="review-no">41 reviews</span>
+		<span class="review-no"><%= rand(80..100) %> reviews</span>
 	      </div>
 	      <p class="product-description"><%= top_movie[:genre] %>
 	      <p class="product-description"><%= top_movie[:description].truncate(150) %>
@@ -28,9 +28,9 @@
 		<span class="color green"></span>
 		<span class="color blue"></span>
 	      </h5>
-	      <h4 class="price">current price: <span>$180</span></h4>
-	      <p class="vote"><strong><%= rand(100) %>%
-		</strong> of viewers enjoyed this movie! <strong>(<%= rand(1000) %> votes)</strong></p>
+	      <h4 class="price">current price: <span>$<%= rand(50..80) %></span></h4>
+	      <p class="vote"><strong><%= rand(50..100) %>%</strong> of viewers enjoyed this movie!
+		<strong>(<%= rand(100..1000) %> votes)</strong></p>
 	      <h5 class="sizes">format:
 		<span class="size" data-toggle="tooltip" title="small">VHS</span>
 		<span class="size" data-toggle="tooltip" title="medium">Beta</span>
