@@ -28,9 +28,9 @@
 
       <h1>Current Hit Videos</h1>
 
-      <% @top5videos.each do |top_5| %>
-      <% @top_5 = top_5 %>
-      <%= render partial: "partials/top_5", object: @top_5 %></br></br>
+      <% @top5videos.each do |top_movie| %>
+      <% @top_movie = top_movie %>
+      <%= render partial: "partials/top_movie", object: @top_movie %></br></br>
       <% end %>
       
     </div>
