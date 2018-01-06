@@ -1,4 +1,4 @@
-require 'api'
+require './get_top_5'
 
 
 top5 = Top5.movieData
@@ -16,3 +16,4 @@ top5.each do |movie|
   
   i += 1
 end
+                                                                
