@@ -1,0 +1,12 @@
+        <div class="col-md-3">
+<h2> Add a New Video </h2>
+
+  <%= form_tag videos_path do %>
+  <%=label_tag 'Movie Title' %>
+    <%=text_field_tag 'title'%>
+
+    <%=label_tag 'Imdb ID' %>
+    <%=text_field_tag 'imdbid'%>
+
+    <div><%= submit_tag "Save" %></div>
+  <% end %>
