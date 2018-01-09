@@ -14,15 +14,19 @@ class VideosController < ApplicationController
   end
 
   def create
-  title = params[:title]
-  imdbid = params[:imbdid]
-    @video = Video.new params[:video]
-    if @video.save
-      flash[:notice] = "#{@video.title} saved."
-      redirect_to @video
-    else
+puts " >>>>>>>>>>>>>> create action initiated"
+
+    title = params[:title]
+  imdbid = params[:imdbid]
+  puts ">>>>>>> #{title}    #{imdbid}  >>>>>>>"
+
+#  @video = Video.new params[:video]
+#    if @video.save
+#      flash[:notice] = "#{@video.title} saved."
+#      redirect_to @video
+#    else
       render :new
-    end
+#    end
   end
   
   def show
