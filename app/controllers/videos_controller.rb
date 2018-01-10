@@ -3,7 +3,7 @@ require 'video_data.rb'
 class VideosController < ApplicationController
 
   def new
-    @video = Video.new
+#    @video = Video.new
   end
   
   def index
