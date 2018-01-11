@@ -4,12 +4,12 @@ require 'stars'
 
 
 def apiTag(movie_id)
-  api_tag = "http://www.omdbapi.com/?i=#{movie_id}&apikey=da4134f5"
+  f = (/^tt/.match(movie_id).nil? ? "t" : "i");
+  api_tag = "http://www.omdbapi.com/?#{f}=#{movie_id}&apikey=da4134f5"
 end  
 
 
 def movieData(imdb_id)
-  api_tag = "http://www.omdbapi.com/?i=#{imdb_id}&apikey=da4134f5"
   apiData = JSON.parse(Net::HTTP.get(URI(apiTag(imdb_id))))
   
   movieDataHash = {title:           apiData["Title"].to_s,

@@ -12,7 +12,6 @@ describe "Visiting the video index page" do
     click_link 'Add New Video'
     expect(page).to have_selector('h2', :text => 'Add a New Video')
     fill_in 'title', with: 'Content'
-    fill_in 'imdbid', with: '12345'
     click_button "Add To List"
   end
 

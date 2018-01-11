@@ -7,20 +7,18 @@ class VideosController < ApplicationController
   end
   
   def index
-    @videos = Video.all
+#    @videos = Video.all
   end
 
   def create
-    title = params[:title]
-    video = movieData(params[:imdbid])
-    puts params[:title]
-    puts video
+    @movie = movieData(params[:title])
+    puts @movie
     #  @video = Video.new params[:video]
     #    if @video.save
     #      flash[:notice] = "#{@video.title} saved."
     #      redirect_to @video
     #    else
-    render :new
+    render :show
     #    end
   end
   

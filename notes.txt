@@ -25,3 +25,17 @@ RSpec
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 end
+
+
+^^^***************************************************************************888*
+PostgreSQL Database: PG::ConnectionBad: FATAL: Peer authentication failed for user
+Tim Clark / 12/04/2016	
+
+If, when working on a Linux machine of the Ubuntu flavor and setting up a PostgreSQL 9.3 database, you run into the error ‘PG::ConnectionBad: FATAL: Peer authentication failed for user’ when trying to connect to a database from a web application (Rails, PHP, Node, etc.), you are more than likely running into local socket connection permissions within PostgreSQL. The most common fix for this error in a development or staging environment is to loosen the local permissions up a bit.
+
+How To:
+1. locate the file ‘/etc/postgresql/9.3/main/pg_hba.conf’ and open it using sudo (sudo nano /etc/postgresql/9.3/main/pg_hba.conf)
+2. scroll down through the file (almost to the bottom) until you find the section that starts with ‘# Database administrative login by Unix domain socket
+3. directly below that you will find ‘local all all peer’ change it to ‘local all all trust’
+4. save and close the file
+5. restart the PostgreSQL server (sudo service postgresql restart)
