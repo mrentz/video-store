@@ -17,7 +17,7 @@ def movieData(imdb_id)
                    genre:           apiData["Genre"].to_s,
                    description:     apiData["Plot"].to_s,
                    actors:          apiData["Actors"].to_s,
-                   released:        apiData["Released"].to_s,
+                   released:        apiData["Released"].to_s.split.last,
                    imdbId:          apiData["imdbID"].to_s,
                    stars:           number_of_stars(apiData["imdbRating"].to_s),
                    thumbnail:       apiData["Poster"].to_s}
