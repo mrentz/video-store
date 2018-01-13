@@ -7,4 +7,6 @@ Rails.application.routes.draw do
     
   resources :videos
 
+  get  '/details', to: 'videos#details' 
+  
 end

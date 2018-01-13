@@ -13,15 +13,17 @@
 	    </div>
 	    <div class="details col-md-6">
 	      <h3 class="product-title"><%= link_to top_movie[:title],
-					    'http://www.imdb.com/title/tt0088247/' %></h3>
+					    'http://www.imdb.com/title/tt0088247/' %>
+	<date style="font-size:16px">(<%= top_movie[:released] %>)</date></h3>
+	      <%= top_movie[:actors] %>
 	      <div class="rating">
 		<div class="stars">
 		  <% top_movie[:stars].each do |star| %>
 		  <span class="fa <%= star %>"></span>
 		  <% end %>
+		  <span class="review-no"><%= rand(80..100) %> reviews</span>
 		</div>
-		<span class="review-no"><%= rand(80..100) %> reviews</span>
-	      </div>
+			      </div>
 	      <p class="product-description"><%= top_movie[:genre] %>
 	      <p class="product-description"><%= top_movie[:description].truncate(150) %>
 	      <h5 class="colors"><%= top_movie[:content] %>

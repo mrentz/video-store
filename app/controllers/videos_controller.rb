@@ -18,11 +18,15 @@ class VideosController < ApplicationController
     #      flash[:notice] = "#{@video.title} saved."
     #      redirect_to @video
     #    else
-    render :show
+    render :details
     #    end
   end
   
   def show
+    
+  end
+
+  def details
     
   end
   
