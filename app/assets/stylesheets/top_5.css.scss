@@ -1,8 +1,15 @@
 
 /*****************globals*************/
 body {
+    background-color: #fef5c9 !important;
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes.*/
   font-family: 'open sans';
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  }
+
+.center {
+  text-align: center;
+}
 
 img {
   max-width: 100%; }
@@ -80,6 +87,7 @@ img {
   -webkit-flex-grow: 1;
       -ms-flex-positive: 1;
           flex-grow: 1; }
+
 
 .product-title, .price, .sizes, .colors {
   text-transform: UPPERCASE;
@@ -161,5 +169,58 @@ img {
     opacity: 1;
     -webkit-transform: scale(1);
             transform: scale(1); } }
+
+/* header */
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+}
+
+#logo:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  margin-left: 30px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
+  background: #ffffcc;
+}
+
+footer a {
+  color: #555;
+}
+
+footer a:hover {
+  color: #222;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  margin-right: 50px;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 30px;
+}
+
 
 /*# sourceMappingURL=style.css.map */
