@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'stars'
 
 #................................................................
 # This is not a definitve test. This is purely investigating my

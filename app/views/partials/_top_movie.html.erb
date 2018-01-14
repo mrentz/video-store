@@ -18,7 +18,8 @@
 	      <p> <strong><%= top_movie[:actors] %></strong></p>
 	      <div class="rating">
 		<div class="stars">
-		  <% top_movie[:stars].each do |star| %>
+		  <% a = number_of_stars(top_movie[:stars]) %>
+		  <% a.each do |star| %>
 		  <span class="fa <%= star %>"></span>
 		  <% end %>
 		  <span class="review-no"><%= "(#{rand(80..100)} " %> reviews) </span>

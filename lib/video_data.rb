@@ -1,7 +1,5 @@
 require 'net/http'
 require 'json'
-require 'stars'
-
 
 def apiTag(movie_id)
   f = (/^tt/.match(movie_id).nil? ? "t" : "i");
@@ -18,6 +16,6 @@ def movieData(imdb_id)
                    description:       apiData["Plot"].to_s,
                    actors:            apiData["Actors"].to_s,
                    release_date:      apiData["Released"].to_s.split.last,
-                   stars:             number_of_stars(apiData["imdbRating"].to_s),
+                   stars:             apiData["imdbRating"].to_s,
                    thumbnail:         apiData["Poster"].to_s}
 end

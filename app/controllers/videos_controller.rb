@@ -1,4 +1,5 @@
 require 'video_data.rb'
+require 'stars'
 
 class VideosController < ApplicationController
 
@@ -12,7 +13,6 @@ class VideosController < ApplicationController
 
   def create
     @movie = Video.new movieData(params[:title])
-    puts @movie
     #  @video = Video.new params[:video]
     #    if @video.save
     #      flash[:notice] = "#{@video.title} saved."
