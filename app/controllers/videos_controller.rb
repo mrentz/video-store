@@ -11,7 +11,7 @@ class VideosController < ApplicationController
   end
 
   def create
-    @movie = movieData(params[:title])
+    @movie = Video.new movieData(params[:title])
     puts @movie
     #  @video = Video.new params[:video]
     #    if @video.save

@@ -12,13 +12,12 @@ end
 def movieData(imdb_id)
   apiData = JSON.parse(Net::HTTP.get(URI(apiTag(imdb_id))))
   
-  movieDataHash = {title:           apiData["Title"].to_s,
-                   content:         apiData["Rated"].to_s,
-                   genre:           apiData["Genre"].to_s,
-                   description:     apiData["Plot"].to_s,
-                   actors:          apiData["Actors"].to_s,
-                   released:        apiData["Released"].to_s.split.last,
-                   imdbId:          apiData["imdbID"].to_s,
-                   stars:           number_of_stars(apiData["imdbRating"].to_s),
-                   thumbnail:       apiData["Poster"].to_s}
+  movieDataHash = {title:             apiData["Title"].to_s,
+                   content_rating:    apiData["Rated"].to_s,
+                   genre:             apiData["Genre"].to_s,
+                   description:       apiData["Plot"].to_s,
+                   actors:            apiData["Actors"].to_s,
+                   release_date:      apiData["Released"].to_s.split.last,
+                   stars:             number_of_stars(apiData["imdbRating"].to_s),
+                   thumbnail:         apiData["Poster"].to_s}
 end
