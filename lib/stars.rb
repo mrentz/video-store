@@ -11,9 +11,9 @@ def number_of_stars(score = "ImdbRating")
     when 0..number_of_whole_stars
       stars[i] = "fa-star checked"
     when number_of_whole_stars + 1
-      stars[i] = decimal_number_stars >= 5 ? "fa-star-half-o checked" : "fa-star"
+      stars[i] = decimal_number_stars >= 5 ? "fa-star-half-o checked" : "fa-star-o checked"
     else
-      stars[i] = "fa-star"
+      stars[i] = "fa-star-o checked"
     end
     i += 1
   end

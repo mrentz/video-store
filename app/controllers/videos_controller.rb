@@ -8,22 +8,22 @@ class VideosController < ApplicationController
   end
   
   def index
-#    @videos = Video.all
+    @videos = Video.all
   end
 
   def create
     @movie = Video.new movieData(params[:title])
-    #  @video = Video.new params[:video]
-    #    if @video.save
-    #      flash[:notice] = "#{@video.title} saved."
-    #      redirect_to @video
-    #    else
-    render :details
-    #    end
+    if @movie.save
+      flash[:notice] = "#{@movie.title} saved."
+      render :details
+    #      redirect_to @movie
+    else
+      render :new
+    end
   end
   
   def show
-    
+    @movie = Video.find(params[:id])
   end
 
   def details

@@ -1,4 +1,5 @@
 require 'get_top_5'
+require 'stars'
 
 class StaticPagesController < ApplicationController
   def home

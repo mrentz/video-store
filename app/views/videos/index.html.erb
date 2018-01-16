@@ -2,9 +2,21 @@
   
   <%= render 'partials/account_info' %>    
   <%= render 'partials/carousel' %>
-        <h1>Matthews List of Videos</h1>
+  <h1>Matthews List of Videos</h1>
+  
+  <% @videos.each do |movie| %>
+  <div>
+    <%= link_to image_tag(movie[:thumbnail],
+	size: "75x111",   alt: "image missing"),
+	video_path(movie) %>
+    <%= movie.title %>
+  </div>
+</br>  <% end %>
+  
+  
+  
   <%= render 'partials/new_video' %>
-
+  
 </br></br>
 </div>
 
