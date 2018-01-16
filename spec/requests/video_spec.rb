@@ -8,11 +8,10 @@ describe "Visiting the video index page" do
   
   it { is_expected.to have_selector('h1', :text => 'Matthews List of Videos') }
 
-  it 'should link to add new video page' do
-    click_link 'Add New Video'
-    expect(page).to have_selector('h2', :text => 'Add a New Video')
+  it 'should search movies' do
+    expect(page).to have_selector('h2', :text => 'Search All Movies')
     fill_in 'title', with: 'Content'
-    click_button "Add To List"
+    click_button "Search"
   end
 
   it 'should render new video detailed view' do

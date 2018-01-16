@@ -4,7 +4,7 @@ require 'stars'
 class VideosController < ApplicationController
 
   def new
-#    @video = Video.new
+
   end
   
   def index
@@ -12,14 +12,20 @@ class VideosController < ApplicationController
   end
 
   def create
-    @movie = Video.new movieData(params[:title])
-    if @movie.save
-      flash[:notice] = "#{@movie.title} saved."
-      render :details
-    #      redirect_to @movie
+    @movie = movieData(params[:title])    
+    if Video.find_by(title: params[:title])
+    render :show
     else
-      render :new
+    render :details
     end
+#    @movie = Video.new movieData(params[:title])
+#    if @movie.save
+#      flash[:notice] = "#{@movie.title} saved."
+#      render :details
+#    #      redirect_to @movie
+#    else
+#      render :new
+#    end
   end
   
   def show
@@ -27,7 +33,7 @@ class VideosController < ApplicationController
   end
 
   def details
-    
+
   end
   
 end

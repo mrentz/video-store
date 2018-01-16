@@ -1,0 +1,12 @@
+<div class="col-md-3">
+  <h2> Search All Movies </h2>
+  
+  <%= form_tag videos_path do %>
+  <%=label_tag 'Movie Title' %>
+  <%=text_field_tag 'title' %>
+  <%= submit_tag "Search" %>
+  <div>
+  </div>
+  <% end %>
+  </br></br>
+</div>
