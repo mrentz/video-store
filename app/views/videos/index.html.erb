@@ -9,7 +9,7 @@
     <%= link_to image_tag(movie[:thumbnail],
 	size: "75x111",   alt: "image missing"),
 	video_path(movie) %>
-    <%= movie.title %>
+    <%= link_to movie.title, video_path(movie)%>
   </div>
 </br>  <% end %>
   

@@ -14,35 +14,38 @@ class VideosController < ApplicationController
   def index
     @videos = Video.all
   end
-
+  
   def create
     if movie_already_saved?
-    render :show
-    else
-    @movie = movieData(params[:title])    
+      render :show
+    elsif params[:commit] == "Search"
+      @movie = movieData(params[:title])    
       if @movie[:thumbnail] == "N/A"
-#        @movie[:thumbnail] = "assets/images/noimage.png"
+        @movie[:thumbnail] = "noimage"
       end
-    render :details
+      render :details
+    elsif params[:commit] == "Save"
+      @movie = Video.new movieData(params[:title])
+      if @movie.save
+        flash[:notice] = "#{@movie.title} saved."
+        redirect_to videos_path
+      end
     end
   end
 
-#    @movie = Video.new movieData(params[:title])
-#    if @movie.save
-#      flash[:notice] = "#{@movie.title} saved."
-#      render :details
-#    #      redirect_to @movie
-#    else
-#      render :new
-#    end
-#  end
+   def destroy
+     video = Video.find(params[:id])
+     video.destroy
+     flash[:notice] = "#{video.title} deleted."
+     redirect_to :action => 'index'
+   end
   
   def show
     @movie = Video.find(params[:id])
   end
-
+  
   def details
 
   end
-  
 end
+  

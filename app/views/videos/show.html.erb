@@ -11,16 +11,27 @@
   </div>
 </div>
 
-    <div class="container">
+<div class="container">
 
-      <%= render partial: "partials/detailed", object: @movie %></br></br>
+  <div>
+    <%= render partial: "partials/detailed", object: @movie %></br>
+  </div>
+  
+  <div>
+    <%= link_to 'Delete',
+	video_path(@movie),
+	method: :delete,
+	data: {confirm: "Do you really want to delete this video?" } %>
+    
+    <div>
       <%= render 'partials/thumbnails' %>
-
     </div>
     
-</br></br>
+  </div>
+  
 </div>
 
+</br></br>
 
   </body>
 
