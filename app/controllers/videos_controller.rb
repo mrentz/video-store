@@ -3,6 +3,10 @@ require 'stars'
 
 class VideosController < ApplicationController
 
+  def movie_already_saved?
+    Video.find_by(title: params[:title])
+  end
+
   def new
 
   end
@@ -12,12 +16,17 @@ class VideosController < ApplicationController
   end
 
   def create
-    @movie = movieData(params[:title])    
-    if Video.find_by(title: params[:title])
+    if movie_already_saved?
     render :show
     else
+    @movie = movieData(params[:title])    
+      if @movie[:thumbnail] == "N/A"
+#        @movie[:thumbnail] = "assets/images/noimage.png"
+      end
     render :details
     end
+  end
+
 #    @movie = Video.new movieData(params[:title])
 #    if @movie.save
 #      flash[:notice] = "#{@movie.title} saved."
@@ -26,7 +35,7 @@ class VideosController < ApplicationController
 #    else
 #      render :new
 #    end
-  end
+#  end
   
   def show
     @movie = Video.find(params[:id])
