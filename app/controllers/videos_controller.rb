@@ -21,7 +21,7 @@ class VideosController < ApplicationController
     elsif params[:commit] == "Search"
       @movie = movieData(params[:title])    
       if @movie[:thumbnail] == "N/A"
-        @movie[:thumbnail] = "noimage"
+        @movie[:thumbnail] = "noimage.png"
       end
       render :details
     elsif params[:commit] == "Save"
