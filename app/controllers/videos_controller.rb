@@ -26,8 +26,12 @@ class VideosController < ApplicationController
       render :details
     elsif params[:commit] == "Save"
       @movie = Video.new movieData(params[:title])
+      if @movie.thumbnail == "N/A"
+        @movie.thumbnail = "noimage.png"
+      end
       if @movie.save
         flash[:notice] = "#{@movie.title} saved."
+        puts ">>>>>>>>>>>>>> #{@movie.thumbnail}"
         redirect_to videos_path
       end
     end
