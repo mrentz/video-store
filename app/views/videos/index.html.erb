@@ -5,15 +5,14 @@
   <h1>Matthews List of Videos</h1>
   
   <% @videos.each do |movie| %>
+  <% @movie = movie %>
   <div>
-    <%= link_to image_tag(movie[:thumbnail],
-	size: "75x111",   alt: "image missing"),
-	video_path(movie) %>
-    <%= link_to movie.title, video_path(movie)%>
+    <%= render partial: "partials/simple", object: @movie %>
   </div>
-</br>  <% end %>
-  
-  
+  </br>
+  <% end %>
+
+	<p style="font-size:16px"> Can't see the movie you are seeking? </p>
   
   <%= render 'partials/find_movie' %>
   

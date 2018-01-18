@@ -1,37 +1,35 @@
+<body>
   
-  <body>
-    
-    <%= render 'partials/jumbotron' %>    
-    
-<div class="container">
-  <div class="row">
-    
-    <%= render 'partials/account_info' %>    
-    <%= render 'partials/carousel' %>
-  </div>
-</div>
-
-<div class="container">
-
-  <div>
-    <%= render partial: "partials/detailed", object: @movie %></br>
+  <%= render 'partials/jumbotron' %>    
+  
+  <div class="container">
+    <div class="row">
+      
+      <%= render 'partials/account_info' %>    
+      <%= render 'partials/carousel' %>
+    </div>
   </div>
   
-  <div>
-    <%= link_to 'Delete',
-	video_path(@movie),
-	method: :delete,
-	data: {confirm: "Do you really want to delete this video?" } %>
+  <div class="container">
     
     <div>
-      <%= render 'partials/thumbnails' %>
+      <%= render partial: "partials/detailed", object: @movie %></br>
+    </div>
+    
+    <div>
+      <%= link_to 'Delete',
+	  video_path(@movie),
+	  method: :delete,
+	  data: {confirm: "Do you really want to delete this video?" } %>
+      
+      <div>
+	<p>
+	<%= render 'partials/thumbnails' %>
+	</p>
+      </div>
+      
     </div>
     
   </div>
   
-</div>
-
-</br></br>
-
-  </body>
-
+</body>

@@ -4,6 +4,7 @@ body {
     background-color: #fef5c9 !important;
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes.*/
   font-family: 'open sans';
+  padding-bottom: 70px;
   overflow-x: hidden;
   }
 
@@ -192,8 +193,9 @@ img {
 
 footer {
   margin-top: 45px;
-  padding-top: 5px;
-  margin-left: 30px;
+  padding-top: 10px;
+  padding-left: 15px;
+  margin-left: 0px;
   border-top: 1px solid #eaeaea;
   color: #777;
   background: #ffffcc;
