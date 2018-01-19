@@ -4,7 +4,7 @@ require 'stars'
 class VideosController < ApplicationController
 
   def movie_already_saved?
-    Video.find_by(title: params[:title])
+    @movie = Video.find_by(title: params[:title])
   end
 
   def new
@@ -17,7 +17,7 @@ class VideosController < ApplicationController
   
   def create
     if movie_already_saved?
-      render :show
+      redirect_to video_path(@movie)
     elsif params[:commit] == "Search"
       @movie = movieData(params[:title])    
       if @movie[:thumbnail] == "N/A"
@@ -31,7 +31,6 @@ class VideosController < ApplicationController
       end
       if @movie.save
         flash[:notice] = "#{@movie.title} saved."
-        puts ">>>>>>>>>>>>>> #{@movie.thumbnail}"
         redirect_to videos_path
       end
     end
