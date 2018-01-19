@@ -16,26 +16,28 @@ class VideosController < ApplicationController
   end
   
   def create
-    if movie_already_saved?
-      redirect_to video_path(@movie)
-    elsif params[:commit] == "Search"
+    if params[:commit] == "Search"
       @movie = movieData(params[:title])    
       if @movie[:thumbnail] == "N/A"
         @movie[:thumbnail] = "noimage.png"
       end
       render :details
-    elsif params[:commit] == "Save"
-      @movie = Video.new movieData(params[:title])
-      if @movie.thumbnail == "N/A"
-        @movie.thumbnail = "noimage.png"
-      end
-      if @movie.save
-        flash[:notice] = "#{@movie.title} saved."
-        redirect_to videos_path
+    else
+      if movie_already_saved?
+        redirect_to video_path(@movie)
+      else
+        @movie = Video.new movieData(params[:title])
+        if @movie.thumbnail == "N/A"
+          @movie.thumbnail = "noimage.png"
+        end
+        if @movie.save
+          flash[:notice] = "#{@movie.title} saved."
+          redirect_to videos_path
+        end
       end
     end
   end
-
+  
    def destroy
      video = Video.find(params[:id])
      video.destroy

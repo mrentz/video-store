@@ -50,7 +50,7 @@ THE GEMS WE MAKE USE OF:
     activerecord-userstamp
     blaknite/pure-admin-rails
     blaknite/crummy
-    font awesome
+  *  font awesome
 
 
   *Postgres for database and ActiveRecord.

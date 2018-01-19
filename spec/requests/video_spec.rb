@@ -12,6 +12,11 @@ describe "Visiting the video index page" do
     expect(page).to have_selector('h2', :text => 'Search All Movies')
     fill_in 'title', with: 'Content'
     click_button "Search"
+    expect(page).to have_content "Content"
+    click_button "Save"
+    expect(page).to have_content "Content"
+    expect(page).to have_selector('h2', :text => 'Search All Movies')
+  #  expect(page).to have_selector ('label for="Movie_Title"')
   end
 
   it 'should render new video detailed view' do
