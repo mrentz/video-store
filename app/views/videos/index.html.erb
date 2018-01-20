@@ -11,7 +11,7 @@
   </div>
   </br>
   <% end %>
-  <%= will_paginate @products %>
+  <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
 
 	<p style="font-size:16px"> Can't see the movie you are seeking? </p>
   

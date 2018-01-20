@@ -17,7 +17,7 @@ gem 'bootstrap-sass', '3.3.7'
 gem 'autoprefixer-rails'
 gem 'pg', '0.18.4'
 gem 'byebug',  '9.0.6', platform: :mri
-gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 
 group :development, :test do
   gem 'rspec-rails'
