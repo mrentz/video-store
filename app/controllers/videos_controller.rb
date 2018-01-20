@@ -3,38 +3,31 @@ require 'stars'
 
 class VideosController < ApplicationController
 
-  def movie_already_saved?
-    @movie = Video.find_by(title: params[:title])
+  def saved(title_search)
+    @movie = Video.where("title ~* ?", "^#{title_search}").first
   end
-
+  
   def new
-
+    
   end
   
   def index
-    @videos = Video.all
+    @videos = Video.all.paginate(page: params[:page], per_page: 5)
   end
   
   def create
-    if params[:commit] == "Search"
+    @movie = saved(params[:title])
+    if @movie.blank? == true && params[:commit] == "Search"
       @movie = movieData(params[:title])    
-      if @movie[:thumbnail] == "N/A"
-        @movie[:thumbnail] = "noimage.png"
-      end
       render :details
-    else
-      if movie_already_saved?
-        redirect_to video_path(@movie)
-      else
-        @movie = Video.new movieData(params[:title])
-        if @movie.thumbnail == "N/A"
-          @movie.thumbnail = "noimage.png"
-        end
-        if @movie.save
-          flash[:notice] = "#{@movie.title} saved."
-          redirect_to videos_path
-        end
+    elsif params[:commit] == "Save"
+      @movie = Video.new movieData(params[:title])
+      if @movie.save
+        flash[:notice] = "#{@movie.title} saved."
+        redirect_to videos_path(@movie)
       end
+    else
+      redirect_to video_path(@movie)
     end
   end
   
@@ -50,7 +43,7 @@ class VideosController < ApplicationController
   end
   
   def details
-
+    
   end
 end
   

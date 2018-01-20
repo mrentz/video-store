@@ -70,8 +70,9 @@ guard :rspec, all_after_pass: false, cmd: "bundle exec rspec" do
     Dir[File.join("**/#{m[1]}.feature")][0] || "spec/acceptance"
   end
 
-  watch(%r{^app/views/(.+)/})       { |m| "#{rspec.spec_dir}/requests" }
-  watch(%r{^lib/(.*/)?([^/]+)\.rb$}){ |m| "#{rspec.spec_dir}/requests" }
+  watch(%r{^app/views/(.+)/})                    { |m| "#{rspec.spec_dir}/requests" }
+  watch(%r{^lib/(.*/)?([^/]+)\.rb$})             { |m| "#{rspec.spec_dir}/requests" }
+  watch(%r{^app/controllers/(.*/)?([^/]+)\.rb$}) { |m| "#{rspec.spec_dir}/requests" }
 #  watch(%r{^lib/(.+)\.rb$})         { |m| "#{rspec.spec_dir}/requests" }
   watch(%r{^app/views/(.+)/}) do |m|
     (m[1][/_pages/] ? "spec/requests/#{m[1]}_spec.rb" :

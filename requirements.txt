@@ -51,9 +51,7 @@ THE GEMS WE MAKE USE OF:
     blaknite/pure-admin-rails
     blaknite/crummy
   *  font awesome
-
-
-  *Postgres for database and ActiveRecord.
+  *  Postgres for database and ActiveRecord.
 
 MVI STANDARDS FOR DISPLAY
 

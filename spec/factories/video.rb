@@ -19,7 +19,7 @@ FactoryBot.define do
     v.title { Faker::Name.title }
     v.description { Faker::Lorem.sentence }
     v.content_rating "pg"
-    v.stars "8"
+    v.stars { rand(0..10) }
     v.actors { Faker::Name.name }
     v.release_date { Date.yesterday }
     v.genre "action, adventure, romance, drama"
