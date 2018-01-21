@@ -43,7 +43,20 @@ class VideosController < ApplicationController
   end
   
   def details
-    
+
   end
+
+  def list
+    @video = saved(params[:search_string])
+    if @movie.blank? == true
+     flash[:notice] = "Nothing relating to #{params[:search_string]} can be found."
+     redirect_to :action => 'index'
+    end
+    puts ">>>>>>>>>>>>>>> #{params[:search_string]}"
+    puts ">>>>>>>>>>>>>>> #{params[:actors]}"
+    puts ">>>>>>>>>>>>>>> #{params[:genre]}"
+    puts ">>>>>>>>>>>>>>> #{params[:title]}"
+  end
+  
 end
   

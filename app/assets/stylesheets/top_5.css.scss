@@ -184,6 +184,11 @@ img {
   font-weight: bold;
 }
 
+#logo:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
 #top-right {
   font-size: 1.0em;
 }
@@ -192,11 +197,7 @@ img {
   padding-top: 9px;
   color: #fff;
   #header-button {color: #000}
-}
-
-#logo:hover {
-  color: #fff;
-  text-decoration: none;
+  #header-button:hover {color: #fff}
 }
 
 /* footer */

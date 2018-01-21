@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   resources :videos
 
   get  '/details', to: 'videos#details' 
+  get  '/list', to: 'videos#list' 
   
 end
