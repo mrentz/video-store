@@ -1,11 +1,11 @@
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="col-sm-7 col-md-7 col-lg-7" id="search">
 	  <form class="form-inline my-2 my-lg-0 navbar-center"
-		action="/list/"
+		action="/videos/"
 		method="GET">
 	    <input class="form-control mr-sm-6"
 		   type="text" name="search_string"
-		   placeholder="Site Search">
+		   placeholder="Keyword Search">
 	    <div class="checkbox">
 	      <% selectors = ["title", "actors", "genre"] %>
 	      <% selectors.each do |selector| %>
@@ -19,7 +19,9 @@
 	      <% end %>
 	      <button class="btn btn-outline-success my-2 my-sm-0"
 		      id="header-button"
-		      type="submit">Site Search
+		      type="submit"
+		      name="commit"
+		      value="site search">Site Search
 	      </button>
 	    </div>
 	  </form>
