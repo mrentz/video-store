@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="col-sm-3">
+      <div class="col-sm-2">
 	<div class="navbar-header">
 	  <a class="navbar-brand">
 	    <%= link_to "Videos", videos_path, id: "logo" %>
@@ -13,14 +13,27 @@
       </div>
 	
 	<!-- Collect the nav links, forms, and other content for toggling -->
-	<div class="col-sm-5" id="search">
+	<div class="col-sm-5 col-md-5 col-lg-5" id="search">
 	  <form class="form-inline my-2 my-lg-0 navbar-center">
-	    <input class="form-control mr-sm-4" type="text" placeholder="Site Search">
-	    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Site Search</button>
+	    <input class="form-control mr-sm-4"
+		   type="text"
+		   placeholder="Site Search">
+	    <button class="btn btn-outline-success my-2 my-sm-0"
+		    id="header-button"
+		    type="submit">Site Search</button>
+	    <div class="checkbox">
+	      <% selectors = ["Title", "Actors", "Genre"] %>
+	      <% selectors.each do |selector| %>
+	      <label> 
+		<%= selector %>
+		<input type="checkbox" value="1">
+	      </label>
+	      <% end %>
+	    </div>
 	  </form>
 	</div>
 	
-	<div class="col-sm-4">
+	<div class="col-sm-5">
 	  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	    <ul class="nav navbar-nav navbar-right">
               <li><%= link_to "Home", root_path %></li>

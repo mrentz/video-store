@@ -184,8 +184,14 @@ img {
   font-weight: bold;
 }
 
+#top-right {
+  font-size: 1.0em;
+}
+
 #search {
   padding-top: 9px;
+  color: #fff;
+  #header-button {color: #000}
 }
 
 #logo:hover {
