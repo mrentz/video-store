@@ -23,6 +23,7 @@ class VideosController < ApplicationController
       end
     when "Search"
       title = movieData(params[:title])    
+          puts ">>>>> #{title[:title]}"
       @movie = saved_locally(title[:title])
       if @movie.blank? == true
         @movie = title
