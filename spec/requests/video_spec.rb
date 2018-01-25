@@ -17,13 +17,20 @@ describe "Visiting the video index page" do
     expect(page).to have_content "Content"
     expect(page).to have_selector('h1', :text => 'Matthews List of Videos') 
     expect(page).to have_selector('h2', :text => 'Search All Movies')
+    expect(page).to have_selector('div.alert.alert-success')
     fill_in 'title', with: 'Content'
     click_button "Search"
     expect(page).to have_content "Content"
     expect(page).to have_selector('h1', :text => 'Matthews Video Store') 
     expect(page).to have_css('a[data-confirm="Do you really want to delete this video?"]')
     click_link "Delete"
+end
+  
+  it 'should confirm before delete' do
   end
-
+  
+  it 'has working flash messages' do
+  end
+    
 
 end

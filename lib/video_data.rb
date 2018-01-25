@@ -11,9 +11,11 @@ def poster(image)
 end
 
 def movieData(imdb_id)
+
   apiData = JSON.parse(Net::HTTP.get(URI(apiTag(imdb_id))))
-  
-  movieDataHash = {title:             apiData["Title"].to_s,
+
+  movieDataHash = apiData["Response"] == "False" ? {title: "false"} : 
+                  {title:             apiData["Title"].to_s,
                    content_rating:    apiData["Rated"].to_s,
                    genre:             apiData["Genre"].to_s,
                    description:       apiData["Plot"].to_s,

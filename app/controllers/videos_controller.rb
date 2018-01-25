@@ -18,18 +18,22 @@ class VideosController < ApplicationController
                             "#{params[:search_string]}").paginate(page: params[:page],
                                                                   per_page: 5)
       if @videos.blank? == true
-        flash[:notice] = "Nothing relating to #{params[:search_string]} can be found."
+        flash[:warning] = "Nothing relating to #{params[:search_string]} can be found."
         redirect_to :action => 'index'
       end
     when "Search"
       title = movieData(params[:title])    
-          puts ">>>>> #{title[:title]}"
-      @movie = saved_locally(title[:title])
-      if @movie.blank? == true
-        @movie = title
-        render :details
+      if title[:title] == "false"
+        flash[:danger] = "The film #{params[:title]} does not exists on the internet"
+        redirect_to :action => 'index'
       else
+        @movie = saved_locally(title[:title])
+        if @movie.blank? == true
+          @movie = title
+          render :details
+        else
         redirect_to video_path(@movie.id)
+        end
       end
     else
       @videos = Video.all.paginate(page: params[:page], per_page: 5)
@@ -39,7 +43,7 @@ class VideosController < ApplicationController
   def create
     @movie = Video.new movieData(params[:title])
     if @movie.save
-      flash[:notice] = "#{@movie.title} saved."
+      flash[:success] = "#{@movie.title} saved."
       redirect_to videos_path(@movie)
     end
   end
@@ -51,7 +55,7 @@ class VideosController < ApplicationController
   def destroy
     video = Video.find(params[:id])
     video.destroy
-    flash[:notice] = "#{video.title} deleted."
+    flash[:info] = "#{video.title} deleted."
     redirect_to :action => 'index'
   end
   
