@@ -34,7 +34,6 @@ end
 
 group :test do
   gem "factory_bot_rails"
-#  gem "capybara", '2.13.0'
   gem "capybara-webkit", '1.14.0'
   gem "selenium-webdriver", '2.53.4'
   gem 'rb-inotify'

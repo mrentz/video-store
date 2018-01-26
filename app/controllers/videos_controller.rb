@@ -45,6 +45,9 @@ class VideosController < ApplicationController
     if @movie.save
       flash[:success] = "#{@movie.title} saved."
       redirect_to videos_path(@movie)
+    else
+      flash[:info] = "#{@movie.title} already seems to exist on our system" 
+      redirect_to videos_path(@movie)
     end
   end
   
