@@ -34,7 +34,9 @@ end
 
 group :test do
   gem "factory_bot_rails"
-  gem "capybara"
+#  gem "capybara", '2.13.0'
+  gem "capybara-webkit", '1.14.0'
+  gem "selenium-webdriver", '2.53.4'
   gem 'rb-inotify'
   gem 'libnotify'
   gem "guard-rspec"

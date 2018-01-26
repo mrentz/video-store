@@ -32,11 +32,15 @@ end
   it 'has working flash messages' do
   end
     
-  it "should have local site title keyphrase search" do
+  it "should have local site title keyphrase search",
+     :type => :feature,
+     :driver => :webkit,
+     :js => true do
     fill_in 'title', with: 'Content'
     click_button "Search"
-    expect(page).to have_content "Content"
-    click_button "Save"
+    expect(page).to have_content "CONTENT"
+    page.find('input[value="Save"]').trigger("click") #workaround Webkit BUG!!
+#    click_button "Save"
     click_link "Home"
     fill_in "Keyword Search", with: "Conte"
     click_button "Site Search"
@@ -45,7 +49,11 @@ end
     expect(page).to have_selector('h2', :text => 'Search All Movies')
     click_link "Content"
     expect(page).to have_css('a[data-confirm="Do you really want to delete this video?"]')
-    click_link "Delete"
+    page.accept_confirm do
+      click_link "Delete"
+    end
+    expect(page).to have_selector('h1', :text => 'Matthews List of Videos') 
+    expect(page).to have_selector('h2', :text => 'Search All Movies')
   end
 
   it "site search should filter for actors" do

@@ -15,3 +15,10 @@ RSpec.configure do |config|
   config.include Capybara::DSL
   config.include FactoryBot::Syntax::Methods
 end
+
+
+Capybara::Webkit.configure do |config|
+    # Allow pages to make requests to any URL without issuing a warning.
+  config.allow_unknown_urls
+end
+
