@@ -3,10 +3,6 @@ require 'stars'
 
 class VideosController < ApplicationController
 
-  def saved_locally(title_search)
-    @movie = Video.where('title = ?', "#{title_search.titleize}").first
-  end
-  
   def new
     
   end
@@ -14,9 +10,8 @@ class VideosController < ApplicationController
   def index
     case params[:commit]
     when "site search"
-      @videos = Video.where('title ~* ?',
-                            "#{params[:search_string]}").paginate(page: params[:page],
-                                                                  per_page: 5)
+      @videos =  site_search_result(params).paginate(page: params[:page],
+                                       per_page: 5)
       if @videos.blank? == true
         flash[:warning] = "Nothing relating to #{params[:search_string]} can be found."
         redirect_to :action => 'index'
@@ -65,6 +60,40 @@ class VideosController < ApplicationController
   def details
     
   end
+
+  private
   
+  def saved_locally(title_search)
+    @movie = Video.where('title = ?', "#{title_search.titleize}").first
+  end
+
+  def site_search_result(params)
+    unless params[:search_string].blank?
+      results = []
+      context_search = false
+      params.each do |key, value|
+        if value == "true"
+          context_search = true
+          key_type = Video.where("#{key} ~* ?",
+                               "#{params[:search_string]}")
+          if key_type
+            results << key_type
+          end   
+        end
+      end
+      if context_search
+        search_result = results.pop
+        results.each do |result|
+          search_result = search_result.or(result)
+        end
+        videos = search_result
+      else
+        videos = Video.where("title ~* ?",
+                             "#{params[:search_string]}")
+      end
+    else
+      videos = Video.all
+    end
+    return videos
+  end
 end
-  
