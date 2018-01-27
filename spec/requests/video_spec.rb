@@ -59,10 +59,10 @@ end
   it "site search should filter for actors" do
   end
 
-  it "site search should filter for genre" do
+  it "site search should filter for theme" do
   end
 
-  it "site search should filter for both actors and genre" do
+  it "site search should filter for both actors and theme" do
   end
 
 end

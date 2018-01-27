@@ -14,6 +14,7 @@ describe Video do
     puts @video.description
     puts @video.actors
     puts @video.thumbnail
+    puts @video.theme
   end
   
   it "must have a unique title" do

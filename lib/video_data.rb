@@ -17,7 +17,7 @@ def movieData(imdb_id)
   movieDataHash = apiData["Response"] == "False" ? {title: "false"} : 
                   {title:             apiData["Title"].to_s,
                    content_rating:    apiData["Rated"].to_s,
-                   genre:             apiData["Genre"].to_s,
+                   theme:             apiData["Genre"].to_s,
                    description:       apiData["Plot"].to_s,
                    actors:            apiData["Actors"].to_s,
                    release_date:      apiData["Released"].to_s.split.last,
