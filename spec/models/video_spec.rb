@@ -16,4 +16,10 @@ describe Video do
     puts @video.thumbnail
   end
   
+  it "must have a unique title" do
+    video2 = Video.new
+    video2.title = @video.title
+    expect(video2).not_to be_valid
+  end
+
 end
