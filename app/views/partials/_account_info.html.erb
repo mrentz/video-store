@@ -2,10 +2,13 @@
 <div class="col-md-3">
           <p class="lead">Filter Result</p>
           <div class="list-group">
-            <a href="#" class="list-group-item">Search String: <%= params[:search_string] %></a>
-            <a href="#" class="<%= tick(params[:title]) %>" aria-hidden="true"> Title</a>
-            <a href="#" class="<%= tick(params[:theme]) %>" aria-hidden="true"> Theme</a>
-            <a href="#" class="<%= tick(params[:actors]) %>" aria-hidden="true">  Actors</a>
+            <a href="#" class="list-group-item">
+	      <strong>Search String: </strong><%= params[:search_string] %></a>
+	    <% ["title", "theme", "actors"].each do |search_key| %>
+	    <% search_type = params[search_key] %>
+	    <a class="<%= tick(search_type) %>"
+	       aria-hidden="true"> <%= search_key.capitalize %></a>
+	    <% end %>
           </div>
 	</div>
 

@@ -1,12 +1,12 @@
 
 def number_of_stars(score = "ImdbRating") 
   i = 0
-  max_stars = 5
+  total_stars = 5
   stars = []
-  total_score = (score.to_f/2).to_s.split(//)
+  total_score = (score.to_f/2).to_s.split(//) #(ImDb ratings are out of 10)
   number_of_whole_stars = total_score[0].to_i-1
   decimal_number_stars = total_score[2].to_i
-  while i < max_stars do
+  while i < total_stars do
     case i
     when 0..number_of_whole_stars
       stars[i] = "fa-star checked"
