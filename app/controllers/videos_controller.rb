@@ -1,5 +1,6 @@
 require 'video_data.rb'
 require 'stars'
+require 'tick'
 
 class VideosController < ApplicationController
 
