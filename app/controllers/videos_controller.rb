@@ -17,7 +17,7 @@ class VideosController < ApplicationController
         flash[:warning] = "Nothing relating to #{params[:search_string]} can be found."
         redirect_to :action => 'index'
       end
-    when "Search"
+    when "Web Search"
       title = movieData(params[:title])    
       if title[:title] == "false"
         flash[:danger] = "The film #{params[:title]} does not exists on the internet"
