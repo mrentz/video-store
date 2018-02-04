@@ -10,7 +10,7 @@ def poster(image)
   image == "N/A" ? "noimage.png" : image  
 end
 
-def movieData(imdb_id)
+def movie_data(imdb_id)
 
   apiData = JSON.parse(Net::HTTP.get(URI(apiTag(imdb_id))))
 

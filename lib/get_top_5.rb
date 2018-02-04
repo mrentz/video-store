@@ -5,7 +5,7 @@ class Top5
   def self.data
     top5 = []
     get_movie_Ids.each do |movie_id|
-      top5 << movieData(movie_id)
+      top5 << movie_data(movie_id)
     end
     return top5  
   end  

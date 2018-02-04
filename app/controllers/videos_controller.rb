@@ -5,30 +5,30 @@ require 'tick'
 class VideosController < ApplicationController
 
   def new
-    
   end
   
   def index
     case params[:commit]
-    when "site search"
-      @videos =  site_search_result(params).paginate(page: params[:page],
-                                       per_page: 5)
-      if @videos.blank? == true
+    when "site_search"
+
+      @videos =  local_search(params).paginate(page: params[:page],
+                                       per_page: 5) 
+     if @videos.blank?
         flash[:warning] = "Nothing relating to #{params[:search_string]} can be found."
         redirect_to :action => 'index'
       end
-    when "Web Search"
-      title = movieData(params[:title])    
+    when "web_search"
+      title = movie_data(params[:title])    
       if title[:title] == "false"
         flash[:danger] = "The film #{params[:title]} does not exists on the internet"
         redirect_to :action => 'index'
       else
-        @movie = saved_locally(title[:title])
-        if @movie.blank? == true
+        @movie = get_video(title[:title])
+        if @movie.blank?
           @movie = title
           render :details
         else
-        redirect_to video_path(@movie.id)
+        redirect_to video_path(@movie)
         end
       end
     else
@@ -37,7 +37,7 @@ class VideosController < ApplicationController
   end
   
   def create
-    @movie = Video.new movieData(params[:title])
+    @movie = Video.new movie_data(params[:title])
     if @movie.save
       flash[:success] = "#{@movie.title} saved."
       redirect_to videos_path(@movie)
@@ -58,43 +58,20 @@ class VideosController < ApplicationController
     redirect_to :action => 'index'
   end
   
-  def details
-    
-  end
-
   private
   
-  def saved_locally(title_search)
-    @movie = Video.where('title = ?', "#{title_search.titleize}").first
+  def get_video(title)
+    Video.find_by(title: title.titleize)
   end
 
-  def site_search_result(params)
-    unless params[:search_string].blank?
-      results = []
-      context_search = false
-      params.each do |key, value|
+  def local_search(params)
+    search_fields = []
+     params.each do |key, value|
         if value == "true"
-          context_search = true
-          key_type = Video.where("#{key} ~* ?",
-                               "#{params[:search_string]}")
-          if key_type
-            results << key_type
-          end   
+          search_fields << key
         end
-      end
-      if context_search
-        search_result = results.pop
-        results.each do |result|
-          search_result = search_result.or(result)
-        end
-        videos = search_result
-      else
-        videos = Video.where("title ~* ?",
-                             "#{params[:search_string]}")
-      end
-    else
-      videos = Video.all
-    end
-    return videos
-  end
+     end
+     videos = Video.search(params[:search_string], search_fields)
+   end
+
 end

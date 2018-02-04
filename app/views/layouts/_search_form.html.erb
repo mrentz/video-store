@@ -7,12 +7,12 @@
 		   type="text" name="search_string"
 		   placeholder="Keyword Search">
 	    <div class="checkbox">
-	      <% selectors = ["title", "actors", "theme"] %>
-	      <% selectors.each do |selector| %>
+	      <% fields = ["title", "actors", "theme"] %>
+	      <% fields.each do |field| %>
 	      <label> 
-		<%= selector %>
+		<%= field %>
 		<input type="checkbox"
-		       name=<%="#{selector}"%>
+		       name=<%="#{field}"%>
 		       value=true
 		       method="GET">
 	      </label>
@@ -21,7 +21,7 @@
 		      id="header-button"
 		      type="submit"
 		      name="commit"
-		      value="site search">Site Search
+		      value="site_search">Site Search
 	      </button>
 	    </div>
 	  </form>
