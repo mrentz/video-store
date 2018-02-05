@@ -10,13 +10,11 @@ class Video < ApplicationRecord
       search_fields.each do |field|
         results << Video.where("#{field} ~* ?", search_string)
       end
-      if results.present?
-        videos = "videos = results.first"
-        for i in 1..results.size-1
-          videos << ".or(results[#{i}])"
-        end
-        videos = eval videos
+      videos = "videos = results.first"
+      for i in 1..results.size-1
+        videos << ".or(results[#{i}])"
       end
+      return eval videos
     end
   end
 end
