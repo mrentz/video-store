@@ -1,5 +1,4 @@
 #***spec/models/video_spec.rb***
-
 require 'rails_helper'
 
 describe Video do
@@ -28,24 +27,42 @@ describe Video do
     video1 = FactoryBot.create(:video)
     video1.title = "title1"
     video1.actors = "actor1"
+    video1.theme = "horror"
     video1.save
-    video2 = Video.create(title: "title2", actors: "actor2")
-    video3 = Video.create(title: "title3", actors: "actor3")
-    video4 = Video.create(title: "title4", actors: "actor4")
-    video5 = Video.create(title: "title5", actors: "actor5")
-    video6 = Video.create(title: "title6", actors: "actor6")
+    video2 = Video.create(title: "title2", actors: "actor2", theme: "theme2")
+    video3 = Video.create(title: "title3", actors: "actor3", theme: "theme3")
+    video4 = Video.create(title: "title4", actors: "actor4", theme: "theme4")
+    video5 = Video.create(title: "title5", actors: "actor5", theme: "theme5")
+    video6 = Video.create(title: "title6", actors: "actor6", theme: "theme6")
+
+    random = rand(1..6)
+
     
-    it "should return full list upon nil search fields" do
+    it "should return full list upon nil search text" do
       videos = Video.search(nil, [:theme, :actors])
       expect(videos).to match_array(Video.all)
     end
 
     it "should return videos by title when no fields checked" do
-      i = rand(1..6)
-      videos = Video.search("title#{i}", [])
-      expect(videos).to match_array(Video.find_by title: "title#{i}")
+      videos = Video.search("title#{random}", [])
+      expect(videos).to match_array(Video.find_by title: "title#{random}")
+    end
+
+    it "returns searched videos" do
+      videos = Video.search("title", [:title, :actors, :theme])
+      expect(videos.size).to eq(6)
     end
     
+    it "returns searched videos by multiple fields" do
+      videos = Video.search("#{random}", [:title])
+      expect(videos.size).to eq(1)
+      videos = Video.search("#{random}", [:actors, :theme])
+      expect(videos.size).to eq(1)
+      videos = Video.search("horror", [:theme])
+      expect(videos.size).to eq(1)
     end
-  
+    
   end
+  
+end
+
