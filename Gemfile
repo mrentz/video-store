@@ -19,6 +19,8 @@ gem 'pg', '0.18.4'
 gem 'byebug',  '9.0.6', platform: :mri
 gem 'will_paginate-bootstrap'
 gem 'titleize'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 
 group :development, :test do
   gem 'rspec-rails'

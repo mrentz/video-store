@@ -1,9 +1,13 @@
+require 'elasticsearch/model'
+
 class Video < ApplicationRecord
 
   validates_uniqueness_of :title, :case_sensitive => false
 
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+  
   def self.search(search_string, search_fields)
-
     return all if search_string.blank?
     if search_fields.blank?
       videos = Video.where("title ~* ?", search_string)
@@ -13,8 +17,9 @@ class Video < ApplicationRecord
         videos = videos.or(Video.where("#{field} ~* ?", search_string))
       end
       return videos
-    end
-    
+    end    
   end
   
 end
+
+Video.import force: true 
