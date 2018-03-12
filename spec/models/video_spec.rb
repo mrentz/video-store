@@ -22,7 +22,7 @@ describe Video do
     expect(video2).not_to be_valid
   end
 
-  describe ".search" do
+  describe ".custom_search" do
     
     video1 = FactoryBot.create(:video)
     video1.title = "title1"
@@ -39,26 +39,26 @@ describe Video do
 
     
     it "should return full list upon nil search text" do
-      videos = Video.search(nil, [:theme, :actors])
+      videos = Video.custom_search(nil, [:theme, :actors])
       expect(videos).to match_array(Video.all)
     end
 
     it "should return videos by title when no fields checked" do
-      videos = Video.search("title#{random}", [])
+      videos = Video.custom_search("title#{random}", [])
       expect(videos).to match_array(Video.find_by title: "title#{random}")
     end
 
     it "returns searched videos" do
-      videos = Video.search("title", [:title, :actors, :theme])
+      videos = Video.custom_search("title", [:title, :actors, :theme])
       expect(videos.size).to eq(6)
     end
     
     it "returns searched videos by multiple fields" do
-      videos = Video.search("#{random}", [:title])
+      videos = Video.custom_search("#{random}", [:title])
       expect(videos.size).to eq(1)
-      videos = Video.search("#{random}", [:actors, :theme])
+      videos = Video.custom_search("#{random}", [:actors, :theme])
       expect(videos.size).to eq(1)
-      videos = Video.search("horror", [:theme])
+      videos = Video.custom_search("horror", [:theme])
       expect(videos.size).to eq(1)
     end
     

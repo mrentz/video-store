@@ -71,7 +71,7 @@ class VideosController < ApplicationController
           search_fields << key
         end
      end
-     videos = Video.search(params[:search_string], search_fields)
+     videos = Video.custom_search(params[:search_string], search_fields)
    end
 
 end

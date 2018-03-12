@@ -7,7 +7,7 @@ class Video < ApplicationRecord
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
   
-  def self.search(search_string, search_fields)
+  def self.custom_search(search_string, search_fields)
     return all if search_string.blank?
     if search_fields.blank?
       videos = Video.where("title ~* ?", search_string)
