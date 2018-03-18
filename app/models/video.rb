@@ -22,7 +22,7 @@ class Video < ApplicationRecord
       query: {
         multi_match: {
           query: query,
-          fields: ['title^10', 'actors']
+          fields: ['title', 'actors', 'theme']
         }
       }
     }
