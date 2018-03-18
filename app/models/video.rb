@@ -7,19 +7,41 @@ class Video < ApplicationRecord
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
   
-  def self.custom_search(search_string, search_fields)
-    return all if search_string.blank?
-    if search_fields.blank?
-      videos = Video.where("title ~* ?", search_string)
-    else
-      videos = Video.where("#{search_fields.pop} ~* ?", search_string)
-      search_fields.each do |field|
-        videos = videos.or(Video.where("#{field} ~* ?", search_string))
-      end
-      return videos
-    end    
-  end
-  
+ def as_indexed_json(options={})
+  {
+    "rating" => content_rating,
+    "title" => title,
+    "actors" => actors,
+    "theme" => theme
+  }
+ end
+
+ def self.search(query)
+  __elasticsearch__.search(
+    {
+      query: {
+        multi_match: {
+          query: query,
+          fields: ['title^10', 'actors']
+        }
+      }
+    }
+  )
+ end
+ 
+ def self.custom_search(search_string, search_fields)
+   return all if search_string.blank?
+   if search_fields.blank?
+     videos = Video.where("title ~* ?", search_string)
+   else
+     videos = Video.where("#{search_fields.pop} ~* ?", search_string)
+     search_fields.each do |field|
+       videos = videos.or(Video.where("#{field} ~* ?", search_string))
+     end
+     return videos
+   end    
+ end
+ 
 end
 
 Video.import force: true 
