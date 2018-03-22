@@ -20,9 +20,9 @@ class Video < ApplicationRecord
   __elasticsearch__.search(
     {
       query: {
-        multi_match: {
+        query_string: {
+          fields: ['title', 'actors', 'theme', 'rating'],
           query: query,
-          fields: ['title', 'actors', 'theme']
         }
       }
     }
