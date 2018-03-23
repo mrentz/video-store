@@ -24,7 +24,10 @@
       
       <div>
 	<p>
-	<%= render 'partials/thumbnails' %>
+	  <% @suggestions.each do |suggestion| %>
+	  <% @suggestion = suggestion %>
+	  <%= render partial: "partials/simple", object: @suggestion %>
+	  <% end %>
 	</p>
       </div>
       

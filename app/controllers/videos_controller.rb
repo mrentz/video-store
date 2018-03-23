@@ -49,6 +49,12 @@ class VideosController < ApplicationController
   
   def show
     @movie = Video.find(params[:id])
+    @suggestions = []
+    Video.suggestions(@movie).each do |suggestion|
+      @suggestions.push(Video.find_by(title: suggestion.title))
+    end
+      puts "These are the suggestions " + @suggestions.inspect
+      puts "And this is the suggestions class " + @suggestions.class.inspect
   end
   
   def destroy

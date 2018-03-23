@@ -28,6 +28,31 @@ class Video < ApplicationRecord
     }
   )
  end
+
+ def self.get_actors_lastname(actors_list)
+   last_name = []
+   actors = actors_list.split(",")
+   actors.each do |name|
+     last_name.push(name.split(" ").last)
+   end
+     last_names = last_name.join(", ")
+   return last_names
+ end
+ 
+ def self.setup_multi_term_search(match_term = "empty,") 
+   match_term = match_term.nil? ? "empty, nil" : match_term
+   search_terms = match_term.split(", ")
+   terms = search_terms.join("+")
+   return terms
+ end
+ 
+ def self.suggestions(video)
+   actors = get_actors_lastname(video.actors)
+   suggestions = Video.search("#{video.content_rating}^5 OR #{setup_multi_term_search(actors)} OR #{setup_multi_term_search(video.theme)}^10")[1,3]
+   puts "suggestions.size: " + suggestions.size.inspect
+   puts "suggestions: " + suggestions.inspect
+   return suggestions
+ end
  
  def self.custom_search(search_string, search_fields)
    return all if search_string.blank?
