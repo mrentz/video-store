@@ -35,6 +35,7 @@ group :development do
 end
 
 group :test do
+  gem 'elasticsearch-extensions'
   gem "factory_bot_rails"
   gem "capybara-webkit", '1.14.0'
   gem "selenium-webdriver", '2.53.4'

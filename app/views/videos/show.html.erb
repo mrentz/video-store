@@ -21,18 +21,24 @@
 	  video_path(@movie),
 	  method: :delete,
 	  data: {confirm: "Do you really want to delete this video?" } %>
-      
-      <div>
-	<p>
+    </div>
+  </div>
+
+  <p class="lead">Recommended Videos by ElasticSearch</p>
+  
+  <p>
+    <div class="container">
+      <div class="row">
 	  <% @suggestions.each do |suggestion| %>
 	  <% @suggestion = suggestion %>
-	  <%= render partial: "partials/simple", object: @suggestion %>
+	    <div class="col-md-4">
+	      <%= render partial: "partials/simple", object: @suggestion %>
+	    </div>
 	  <% end %>
-	</p>
       </div>
-      
     </div>
-    
-  </div>
+  </p>
   
+</div>
+
 </body>

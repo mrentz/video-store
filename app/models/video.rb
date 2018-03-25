@@ -9,7 +9,7 @@ class Video < ApplicationRecord
   
  def as_indexed_json(options={})
   {
-    "rating" => content_rating,
+    "content_rating" => content_rating,
     "title" => title,
     "actors" => actors,
     "theme" => theme
@@ -43,15 +43,20 @@ class Video < ApplicationRecord
    match_term = match_term.nil? ? "empty, nil" : match_term
    search_terms = match_term.split(", ")
    terms = search_terms.join("+")
+   puts "the terms are: " + terms.inspect
    return terms
  end
  
  def self.suggestions(video)
    actors = get_actors_lastname(video.actors)
-   suggestions = Video.search("#{video.content_rating}^5 OR #{setup_multi_term_search(actors)} OR #{setup_multi_term_search(video.theme)}^10")[1,3]
-   puts "suggestions.size: " + suggestions.size.inspect
-   puts "suggestions: " + suggestions.inspect
-   return suggestions
+   puts "THE acTORS ARE " + actors
+   suggestions = Video.search("#{video.content_rating}^5 OR #{setup_multi_term_search(actors)} OR #{setup_multi_term_search(video.theme)}^10")[1, 4]
+   if suggestions.nil?
+     return video.all
+   else
+     suggestions.each {|s| suggestions.delete(s) if s.title.include?(video.title)}
+     return suggestions[0, 3]
+   end
  end
  
  def self.custom_search(search_string, search_fields)

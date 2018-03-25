@@ -5,6 +5,11 @@ describe Video do
 
   before(:each) do
     @video = FactoryBot.create(:video)
+    video2 = Video.create(title: "title2", actors: "actor2", theme: "theme2", description: Faker::Lorem.sentence)
+    video3 = Video.create(title: "title3", actors: "actor3", theme: "theme3", description: Faker::Lorem.sentence)
+    video4 = Video.create(title: "title4", actors: "actor4", theme: "theme4", description: Faker::Lorem.sentence)
+    video5 = Video.create(title: "title5", actors: "actor5", theme: "theme5", description: Faker::Lorem.sentence)
+    video6 = Video.create(title: "title6", actors: "actor6", theme: "theme6", description: Faker::Lorem.sentence)
   end
   
   it "has a valid factory" do
@@ -23,17 +28,25 @@ describe Video do
   end
 
   describe ".custom_search" do
-    
+  before(:each) do
+
     video1 = FactoryBot.create(:video)
     video1.title = "title1"
     video1.actors = "actor1"
     video1.theme = "horror"
     video1.save
-    video2 = Video.create(title: "title2", actors: "actor2", theme: "theme2")
-    video3 = Video.create(title: "title3", actors: "actor3", theme: "theme3")
-    video4 = Video.create(title: "title4", actors: "actor4", theme: "theme4")
-    video5 = Video.create(title: "title5", actors: "actor5", theme: "theme5")
-    video6 = Video.create(title: "title6", actors: "actor6", theme: "theme6")
+    i=2
+    videos=[video1]
+
+    5.times do
+      videos[i] = Video.create(title: "title#{i}",
+                               actors: "actor#{i}",
+                               theme: "theme#{i}",
+                               thumbnail: "noimage.png",
+                               description: Faker::Lorem.sentence)
+      i+=1
+    end
+  end
 
     random = rand(1..6)
 

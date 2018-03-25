@@ -4,16 +4,24 @@
   <%= render 'partials/carousel' %>
   <h1>Matthews List of Videos</h1>
   
-  <% @videos.each do |movie| %>
-  <% @movie = movie %>
-  <div>
-    <%= render partial: "partials/simple", object: @movie %>
+  <div class="row">
+    <div class="col-xs-4">
+      <% @videos.each do |movie| %>
+      <% @movie = movie %>
+      <div>
+	<div class="row">
+	  <%= render partial: "partials/simple", object: @movie %>
+	</div>
+      </div>
+      <br>
+      <% end %>
+    </div>
   </div>
-  </br>
-  <% end %>
+  
+  
   <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
-
-	<p style="font-size:16px"> Can't see the movie you are seeking? </p>
+  
+  <p style="font-size:16px"> Can't see the movie you are seeking? </p>
   
   <%= render 'partials/find_movie' %>
   

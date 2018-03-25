@@ -23,7 +23,7 @@ FactoryBot.define do
     v.actors { Faker::Name.name }
     v.release_date { Date.yesterday }
     v.theme "action, adventure, romance, drama"
-    v.thumbnail { Faker::Internet.url }
+    v.thumbnail "noimage.png" #{ Faker::Internet.url }
   end
 end
 
