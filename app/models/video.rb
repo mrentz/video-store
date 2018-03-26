@@ -47,7 +47,7 @@ class Video < ApplicationRecord
  
  def self.suggestions(video)
    actors = get_actors_lastname(video.actors)
-   suggestions = Video.search("#{video.content_rating}^5 OR #{setup_multi_term_search(actors)} OR #{setup_multi_term_search(video.theme)}^10")[0, 4]
+   suggestions = Video.search("#{setup_multi_term_search(video.theme)}^10 OR #{video.content_rating} OR #{setup_multi_term_search(actors)}^5")[0, 4]
    if suggestions.nil?
      suggestions = Video.search("*")[0, 4]
    end
