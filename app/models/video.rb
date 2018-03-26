@@ -4,8 +4,7 @@ class Video < ApplicationRecord
 
   validates_uniqueness_of :title, :case_sensitive => false
 
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
+  include Searchable
   
  def as_indexed_json(options={})
   {
@@ -48,13 +47,12 @@ class Video < ApplicationRecord
  
  def self.suggestions(video)
    actors = get_actors_lastname(video.actors)
-   suggestions = Video.search("#{video.content_rating}^5 OR #{setup_multi_term_search(actors)} OR #{setup_multi_term_search(video.theme)}^10")[1, 4]
+   suggestions = Video.search("#{video.content_rating}^5 OR #{setup_multi_term_search(actors)} OR #{setup_multi_term_search(video.theme)}^10")[0, 4]
    if suggestions.nil?
-     return video.all
-   else
-     suggestions.each {|s| suggestions.delete(s) if s.title.include?(video.title)}
-     return suggestions[0, 3]
+     suggestions = Video.search("*")[0, 4]
    end
+   suggestions.each {|s| suggestions.delete(s) if s.title.include?(video.title)}
+   return suggestions[0, 3]
  end
  
  def self.custom_search(search_string, search_fields)
