@@ -1,20 +1,20 @@
-      <div class="row">
-      <div class="col-xs-4">
-	<%= link_to image_tag(simple[:thumbnail],
-	    width: "80",   alt: "image missing"),
-	    video_path(simple) %>
-      </div>
-      
-      <div class="col-xs-8 simple">
-	<%= link_to simple.title, video_path(simple)%>
-	<date style="font-size:12px">(<%= simple[:release_date] %>)</date><br>
-	<strong style="font-size:10px">
-	  <%= simple[:content_rating] %><p></p>
-	  <p style="font-size:10px"> <%= simple[:actors] %></p>
-	  <p style="font-size:10px"><%= simple[:theme] %></p>
-	  <p class="product-description" style="font-size:10px"></p>
-	</strong>
-	<p style="font-size:8px"><%= simple[:description].truncate(50) %></p>
-      </div>
-      </div>
+<div class="row">
+  <div class="col-xs-4">
+    <%= link_to image_tag(simple[:thumbnail],
+	width: "80",   alt: "image missing"),
+	video_path(simple) %>
+  </div>
   
+  <div class="col-xs-8 simple">
+    <%= link_to simple.title, video_path(simple)%>
+    <date style="font-size:12px">(<%= simple[:release_date] %>)</date><br>
+    <strong style="font-size:10px">
+      <%= simple[:content_rating] %><p></p>
+      <p style="font-size:10px"> <%= simple[:actors] %></p>
+      <p style="font-size:10px"><%= simple[:theme] %></p>
+      <p class="product-description" style="font-size:10px"></p>
+    </strong>
+    <p style="font-size:8px"><%= simple[:description].truncate(50) %></p>
+  </div>
+</div>
+
