@@ -21,6 +21,7 @@ gem 'will_paginate-bootstrap'
 gem 'titleize'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
+gem 'devise',         '4.4.0'
 
 group :development, :test do
   gem 'rspec-rails'
