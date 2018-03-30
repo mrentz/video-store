@@ -1,27 +1,39 @@
 <!-- Navigation -->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-  <div class="container">
+<nav class="navbar navbar-inverse navbar-fixed-top foo">
+  <div class="container-fluid">
     <div class="row">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="col-sm-2">
-	<div class="navbar-header">
-	  <a class="navbar-brand">
-	    <%= link_to "Videos", videos_path, id: "logo" %>
-	  </a>	  
+      <div class="col-sm-3 no-gutters">
+	<!-- Brand and toggle get grouped for better mobile display -->
+	<div class="col-sm-6 no-gutters">
+	  <div class="navbar-header navbar-nav">
+	    <a class="navbar-brand">
+	      <%= link_to "Videos", videos_path, id: "logo" %>
+	    </a>	  
+	  </div>
+	  <!-- /.col-md-2-->
 	</div>
-	<!-- /.col-md-2-->
+	
+	<div class="col-sm-6 no-gutters">
+	  <ul class="nav navbar-nav navbar-expand-sm padding">
+            <li><%= link_to "Home", root_path %></li>
+            <li><%= link_to "Help", help_path %></li>
+	    </ul>
+	</div>
       </div>
-
-      <%= render 'layouts/search_form' %>    
+	      <%= render 'layouts/search_form' %>    
       
 	<div class="col-sm-3">
-	  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	    <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to "Home", root_path %></li>
-              <li><%= link_to "Help", help_path %></li>
-              <li><%= link_to "Log in", '#' %></li>
+	  <strong>
+	    <ul class="nav navbar-nav navbar-center">
+	      <% if user_signed_in? %>
+	      <li><%= link_to current_user.email, edit_user_registration_path %>
+	      <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+	      <% else %>
+	      <li><%= link_to "Sign Up", new_user_registration_path %></li>
+	      <li><%= link_to "Log in", new_user_session_path %></li>
+	      <% end %>
 	    </ul>
-	  </div>
+	  </strong>
 	</div>
 	<!-- /.row -->
     </div>

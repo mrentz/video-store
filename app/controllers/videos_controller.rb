@@ -4,6 +4,8 @@ require 'tick'
 
 class VideosController < ApplicationController
 
+before_action :authenticate_user!, except: [:index, :home, :show, :create, :destroy]
+  
   def new
   end
   
