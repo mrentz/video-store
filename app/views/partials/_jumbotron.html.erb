@@ -1,7 +1,7 @@
 <div class="center jumbotron">
   <h1>Matthews Video Store</h1>
     <p>
-      Welcome to the video store "Home page"
+      Welcome to the video store "<%= params[:action] %> page"
     </p>
     
     <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary" %>
