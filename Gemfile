@@ -22,6 +22,7 @@ gem 'titleize'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'devise',         '4.4.0'
+gem 'cancancan'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -36,7 +37,6 @@ group :development do
 end
 
 group :test do
-  gem 'elasticsearch-extensions'
   gem "factory_bot_rails"
   gem "capybara-webkit", '1.14.0'
   gem "selenium-webdriver", '2.53.4'
