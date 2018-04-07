@@ -1,5 +1,5 @@
 require 'capybara/rspec'
-require 'elasticsearch/extensions/test/cluster'
+#require 'elasticsearch/extensions/test/cluster'
 
 Capybara.javascript_driver = :webkit
 

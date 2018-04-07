@@ -31,8 +31,8 @@ it should have a status column of the rented date (warning if close to a week, o
 
 THE GEMS WE MAKE USE OF:
 
-    Devise
-    Cancancan
+  *  Devise
+  *  Cancancan
     Sidekiq
     carrierwave
   *  rspec
