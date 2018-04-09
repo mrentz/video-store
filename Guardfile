@@ -24,7 +24,7 @@
 #  * zeus: 'zeus rspec' (requires the server to be started separately)
 #  * 'just' rspec: 'rspec'
 
-guard :rspec, all_after_pass: false, cmd: "bundle exec rspec" do
+guard :rspec, all_after_pass: false, cmd: "xvfb-run bundle exec rspec" do
   require "guard/rspec/dsl"
   require 'active_support/inflector'
   dsl = Guard::RSpec::Dsl.new(self)
@@ -60,6 +60,10 @@ guard :rspec, all_after_pass: false, cmd: "bundle exec rspec" do
   watch(rails.routes)          { "#{rspec.spec_dir}/routing" }
   watch(rails.app_controller)  { "#{rspec.spec_dir}/controllers" }
 
+  # Capybara features specs
+  watch(rails.view_dirs)     { |m| rspec.spec.call("features/#{m[1]}") }
+  watch(rails.layouts)       { |m| rspec.spec.call("features/#{m[1]}") }
+
   # Turnip features and steps
   watch(%r{^spec/acceptance/(.+)\.feature$})
   watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$}) do |m|
@@ -76,16 +80,3 @@ guard :rspec, all_after_pass: false, cmd: "bundle exec rspec" do
   end
 end
 
-guard :rspec, all_after_pass: false, cmd: "xvfb-run bundle exec rspec" do
-  require "guard/rspec/dsl"
-  require 'active_support/inflector'
-  dsl = Guard::RSpec::Dsl.new(self)
-
-  # Rails files
-  rails = dsl.rails(view_extensions: %w(erb haml slim))
-
-  # Capybara features specs
-  watch(rails.view_dirs)     { |m| rspec.spec.call("features/#{m[1]}") }
-  watch(rails.layouts)       { |m| rspec.spec.call("features/#{m[1]}") }
-
-end

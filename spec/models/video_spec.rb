@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: videos
+#
+#  id             :integer          not null, primary key
+#  title          :string
+#  description    :string
+#  content_rating :string
+#  rating         :integer
+#  actors         :string
+#  thumbnail      :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  theme          :text
+#  stars          :string
+#  release_date   :string
+#
+
 #***spec/models/video_spec.rb***
 require 'rails_helper'
 
@@ -28,39 +46,39 @@ describe Video do
   end
 
   describe ".custom_search" do
-  before(:each) do
-
-    video1 = FactoryBot.create(:video)
-    video1.title = "title1"
-    video1.actors = "actor1"
-    video1.theme = "horror"
-    video1.save
-    i=2
-    videos=[video1]
-
-    5.times do
-      videos[i] = Video.create(title: "title#{i}",
-                               actors: "actor#{i}",
-                               theme: "theme#{i}",
-                               thumbnail: "noimage.png",
-                               description: Faker::Lorem.sentence)
-      i+=1
+    before(:each) do
+      
+      video1 = FactoryBot.create(:video)
+      video1.title = "title1"
+      video1.actors = "actor1"
+      video1.theme = "horror"
+      video1.save
+      i=2
+      videos=[video1]
+      
+      5.times do
+        videos[i] = Video.create(title: "title#{i}",
+                                 actors: "actor#{i}",
+                                 theme: "theme#{i}",
+                                 thumbnail: "noimage.png",
+                                 description: Faker::Lorem.sentence)
+        i+=1
+      end
     end
-  end
-
+    
     random = rand(1..6)
-
+    
     
     it "should return full list upon nil search text" do
       videos = Video.custom_search(nil, [:theme, :actors])
       expect(videos).to match_array(Video.all)
     end
-
+    
     it "should return videos by title when no fields checked" do
       videos = Video.custom_search("title#{random}", [])
       expect(videos).to match_array(Video.find_by title: "title#{random}")
     end
-
+    
     it "returns searched videos" do
       videos = Video.custom_search("title", [:title, :actors, :theme])
       expect(videos.size).to eq(6)

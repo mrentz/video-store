@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe "Visiting the video index page" do
 
-
   before(:each) do
     5.times do
       @video = FactoryBot.create(:video)
@@ -33,7 +32,7 @@ describe "Visiting the video index page" do
     expect(page).to have_selector('h1', :text => 'Matthews Video Store') 
     expect(page).to have_css('a[data-confirm="Do you really want to delete this video?"]')
     click_link "Delete"
-end
+  end
   
   it 'should confirm before delete' do
   end
