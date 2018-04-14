@@ -26,6 +26,7 @@ gem 'cancancan'
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'rspec-wait'
 end
 
 group :development do

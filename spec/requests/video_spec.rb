@@ -2,12 +2,6 @@ require 'rails_helper'
 
 describe "Visiting the video index page" do
 
-  before(:each) do
-    5.times do
-      @video = FactoryBot.create(:video)
-    end
-  end
-  
   Video.__elasticsearch__.refresh_index!
 
   before { visit videos_path }
