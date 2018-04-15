@@ -30,6 +30,10 @@ let(:user) { FactoryBot.create(:user) }
       expect(page).to have_content(Video.first.title)
       expect(page).to have_link(Video.first.title)
       click_link Video.first[:title]
+      expect(page).to have_content('Sign up now!')
+      expect(page).to have_content('add to cart')
+      click_link('add to cart')
+      expect(page).to have_content('Sign up now!')
     end
     
   end

@@ -31,7 +31,6 @@ describe "Visiting the video index page" do
     ref = "/videos/#{Video.last.id}"
     click_link "2"
     page.assert_selector(:link, Video.last.title, href: "#{ref}")
-    puts Video.last.thumbnail
   end
   
 
