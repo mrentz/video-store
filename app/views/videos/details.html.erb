@@ -5,7 +5,7 @@
     <%= render partial: "partials/detailed", object: @movie %></br></br>
     <%= form_tag videos_path do %>
     <%= hidden_field_tag :title , @movie[:title] %>
-    <%= submit_tag "Save" %>
+    <%= submit_tag "Save", type: "button" %>
     <% end %>
 
   </div>

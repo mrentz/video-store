@@ -46,7 +46,9 @@
 		<span class="size" data-toggle="tooltip" title="large">Blu-ray</span>
 	      </h5>
 	      <div class="action">
-		<button class="add-to-cart btn btn-default" type="button">add to cart</button>
+		<%= link_to  "add to cart", current_user,
+		    class: "add-to-cart btn btn-default",
+		    type: "button" %> 
 		<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
 	      </div>
 	    </div>
