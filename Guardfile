@@ -24,7 +24,7 @@
 #  * zeus: 'zeus rspec' (requires the server to be started separately)
 #  * 'just' rspec: 'rspec'
 
-guard :rspec, all_after_pass: false, cmd: "bundle exec rspec" do
+guard :rspec, all_after_pass: false, cmd: "xvfb-run bundle exec rspec" do
   require "guard/rspec/dsl"
   require 'active_support/inflector'
   dsl = Guard::RSpec::Dsl.new(self)
@@ -79,3 +79,4 @@ guard :rspec, all_after_pass: false, cmd: "bundle exec rspec" do
        "spec/requests/#{m[1].singularize}_pages_spec.rb")
   end
 end
+

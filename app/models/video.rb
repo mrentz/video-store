@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: videos
+#
+#  id             :integer          not null, primary key
+#  title          :string
+#  description    :string
+#  content_rating :string
+#  rating         :integer
+#  actors         :string
+#  thumbnail      :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  theme          :text
+#  stars          :string
+#  release_date   :string
+#
+
 require 'elasticsearch/model'
 
 class Video < ApplicationRecord
