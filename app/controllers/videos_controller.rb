@@ -4,19 +4,19 @@ require 'tick'
 
 class VideosController < ApplicationController
 
-before_action :authenticate_user!, except: [:index, :home, :show, :create, :destroy]
+before_action :authenticate_user!, except: [:index, :home, :show, :destroy]
   
   def new
   end
   
   def index
+
     case params[:commit]
     when "site_search"
-
       @videos =  local_search(params).paginate(page: params[:page],
                                        per_page: 5) 
      if @videos.blank?
-        flash[:warning] = "Nothing relating to #{params[:search_string]} can be found."
+        flash[:warning] = "Nothing relating to #{params[:search_string]} can be found on this database."
         redirect_to :action => 'index'
       end
     when "web_search"
@@ -28,6 +28,7 @@ before_action :authenticate_user!, except: [:index, :home, :show, :create, :dest
         @movie = get_video(title[:title])
         if @movie.blank?
           @movie = title
+          @user_id = 3
           render :details
         else
         redirect_to video_path(@movie)
@@ -39,12 +40,15 @@ before_action :authenticate_user!, except: [:index, :home, :show, :create, :dest
   end
   
   def create
+
     @movie = Video.new movie_data(params[:title])
+    @movie.user_id = current_user.id
+
     if @movie.save
       flash[:success] = "#{@movie.title} saved."
       redirect_to videos_path(@movie)
     else
-      flash[:info] = "#{@movie.title} already seems to exist on our system" 
+      flash[:info] = "#{@movie.title} doesn't seem to want to save on our system" 
       redirect_to videos_path(@movie)
     end
   end
