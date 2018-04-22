@@ -14,6 +14,7 @@
 #  theme          :text
 #  stars          :string
 #  release_date   :string
+#  user_id        :integer
 #
 
 #***spec/models/video_spec.rb***
