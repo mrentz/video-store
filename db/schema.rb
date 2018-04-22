@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180330021721) do
+ActiveRecord::Schema.define(version: 20180421061752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 20180330021721) do
     t.text "theme"
     t.string "stars"
     t.string "release_date"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_videos_on_user_id"
   end
 
 end

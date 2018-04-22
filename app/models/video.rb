@@ -20,6 +20,7 @@ require 'elasticsearch/model'
 
 class Video < ApplicationRecord
 
+  belongs_to :user
   validates_uniqueness_of :title, :case_sensitive => false
 
   include Searchable
