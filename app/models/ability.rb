@@ -1,3 +1,5 @@
+## Should be making use of cancancan and devise for authentication and setting up levels of user access which should be defined here
+# looks like i can delete any video without even logging in, something you'd want to prevent users having access to
 class Ability
   include CanCan::Ability
 

@@ -1,19 +1,20 @@
+<%# do you need body tags, these normally come from the layout file %>
 <body>
-  
+<%# fix the indenting %>
   <div class="container">
     <div class="row">
-      
-      <%= render 'partials/account_info' %>    
+
+      <%= render 'partials/account_info' %>
       <%= render 'partials/carousel' %>
     </div>
   </div>
-  
+
   <div class="container">
-    
+
     <div>
       <%= render partial: "partials/detailed", object: @movie %></br>
     </div>
-    
+
     <div>
       <%= link_to 'Delete',
 	  video_path(@movie),
@@ -23,7 +24,7 @@
   </div>
 
   <p class="lead">Recommended Videos by ElasticSearch</p>
-  
+
   <p>
     <div class="container">
       <div class="row">
@@ -36,7 +37,7 @@
       </div>
     </div>
   </p>
-  
+
 </div>
 
 </body>

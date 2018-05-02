@@ -1,13 +1,15 @@
 <div class="row">
   <div class="col-xs-4">
 
+    <%# fix the indenting %>
     <%= link_to image_tag(simple[:thumbnail],
 	width: "80",   alt: "image missing"),
 	video_path(simple) %>
   </div>
-  
+
   <div class="col-xs-8 simple">
     <%= link_to simple.title, video_path(simple)%>
+    <%# Style should be in the css %>
     <date style="font-size:12px">(<%= simple[:release_date] %>)</date><br>
     <strong style="font-size:10px">
       <%= simple[:content_rating] %><p></p>

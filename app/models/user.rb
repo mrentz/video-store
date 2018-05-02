@@ -17,6 +17,7 @@
 #  updated_at             :datetime         not null
 #
 
+# rdoc here
 class User < ApplicationRecord
 
   has_many :videos

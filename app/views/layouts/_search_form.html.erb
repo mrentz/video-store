@@ -9,7 +9,7 @@
 	    <div class="checkbox">
 	      <% fields = ["title", "actors", "theme"] %>
 	      <% fields.each do |field| %>
-	      <label> 
+	      <label>
 		<%= field %>
 		<input type="checkbox"
 		       name=<%="#{field}"%>
@@ -22,8 +22,13 @@
 		      type="submit"
 		      name="commit"
 		      value="site_search">Site Search
+          <%# text turns white on hover and can no longer be seen %>
+          <%# also no validation errors are showing up, possibly due to error text colour, the checkbox next to search are
+          likely unnessary same for the keyword matching box, better to just search all possible fields and then display result to user
+          at most you could scope the search to within page, e.g. if you were in horror and search an actor it would find horror movies with
+          that actor but that is outside of the scope of this project %>
 	      </button>
 	    </div>
 	  </form>
 	</div>
-	
+

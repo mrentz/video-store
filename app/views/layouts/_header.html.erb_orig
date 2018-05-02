@@ -1,3 +1,4 @@
+<%# if this isn't being used anymore delete it %>
 <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
         <%= link_to "Videos", videos_path, id: "logo" %>

@@ -1,14 +1,19 @@
 <div class="row">
-  
-  <%= render 'partials/account_info' %>    
+
+  <%= render 'partials/account_info' %>
   <%= render 'partials/carousel' %>
   <h1>Matthews List of Videos</h1>
-  
+
   <div class="row">
     <div class="col-xs-4">
+      <%# doesn't seem to be any logical order to these, should have some kind of ordering, e.g. title be default also
+      would be nice to see some scopes in place so i can just select a genre and it would only display movies falling within
+      that genre in this list, also lots of space to the right of the list, a grid system displaying two or three in a row would
+      be more effective i think %>
       <% @videos.each do |movie| %>
       <% @movie = movie %>
       <div>
+  <%# fix the indenting %>
 	<div class="row">
 	  <%= render partial: "partials/simple", object: @movie %>
 	</div>
@@ -17,14 +22,15 @@
       <% end %>
     </div>
   </div>
-  
-  
+
+
   <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
-  
+
+  <%# style in css %>
   <p style="font-size:16px"> Can't see the movie you are seeking? </p>
-  
+
   <%= render 'partials/find_movie' %>
-  
+
 </br></br>
 </div>
 

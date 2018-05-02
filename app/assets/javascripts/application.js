@@ -14,6 +14,7 @@
 //= require rails-ujs
 //= require turbolinks
 //= require bootstrap
+// Tree should generally be last in this list
 //= require_tree .
 //= require_bootstrap
 //= require_jquery

@@ -1,10 +1,11 @@
 <div class="col-md-3">
   <h2> Add a New Video </h2>
-  
+
   <%= form_tag videos_path do %>
   <%=label_tag 'Movie Title' %>
   <%=text_field_tag 'title'%>
-  
+
+    <%# no need to split this over two lines, or if you want to, keep both div tags on their own line and fix the indenting %>
   <div><%= submit_tag "Add To List" %>
   </div>
   <% end %>

@@ -29,7 +29,7 @@
 #                          PATCH  /videos/:id(.:format)          videos#update
 #                          PUT    /videos/:id(.:format)          videos#update
 #                          DELETE /videos/:id(.:format)          videos#destroy
-# 
+#
 
 Rails.application.routes.draw do
 
@@ -37,12 +37,20 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
+  ##
+  # I've noticed that along with the no user permissions level there is no back end system to this site, you should be making \
+  # use of a admin namespace routes setup and the pure admin gem to create an 'admin' version of the site where records can easily
+  # be view and create/updated in a useful, user-friendly way that would only be accessible by users with the create permissions.
+  # if you don't have access contact Daniel:
+  # https://github.com/blaknite/pure-admin-rails
+  #
+
   resources :users, only: [:show]
-  
+
   get  '/help',    to: 'static_pages#help'
   get  '/about',   to: 'static_pages#about'
   get  '/contact', to: 'static_pages#contact'
-    
+
   resources :videos
 
 end

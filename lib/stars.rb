@@ -1,5 +1,6 @@
 
-def number_of_stars(score = "ImdbRating") 
+# rdoc
+def number_of_stars(score = "ImdbRating")
   i = 0
   total_stars = 5
   stars = []
@@ -17,5 +18,6 @@ def number_of_stars(score = "ImdbRating")
     end
     i += 1
   end
+  # don't need return for ruby
   return stars
 end
