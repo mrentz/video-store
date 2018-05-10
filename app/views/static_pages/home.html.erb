@@ -1,25 +1,27 @@
+<%# fix the indenting %>
+
 <body>
-  
+
   <div class="container">
     <div class="row">
-      
+
       <%= render 'partials/account_info' %>
-      <%= render 'partials/carousel' %>    
-      
+      <%= render 'partials/carousel' %>
+
     </div>
   </div>
-  
+
   <div class="container">
-    
+
     <div class="center">
       <h1>Current Hit Videos</h1>
     </div>
-    
+
     <% @top5videos.each do |top_movie| %>
     <% @top_movie = top_movie %>
     <%= render partial: "partials/detailed", object: @top_movie %></br></br>
     <% end %>
-    
+
   </div>
-  
+
 </body>

@@ -3,15 +3,18 @@
   <p class="lead">Keyword Search </p>
   <div class="list-group round">
     <a href="#" class="list-group-item">
-      <strong>Search String: 
+      <strong>Search String:
+        <%# keep styling in css files, also looks like font tags are deprecated so should avoid them when possible, also indenting also i can click on this and it will refresh
+        the page, don't think that was your intention %>
 	<font color=#1cc409><%= params[:search_string].capitalize unless params[:search_string].nil? %></font>
       </strong>
-    </a>    
+    </a>
     <% ["title", "theme", "actors"].each do |search_key| %>
+      <%# not sure why this is over two line, the line in rubymine is a good indicator when your line is too long %>
     <a class="<%= tick params[search_key] %>"
        aria-hidden="true"> <%= search_key.capitalize %></a>
     <% end %>
   </div>
 </div>
 
- 
+

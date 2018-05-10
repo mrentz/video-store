@@ -1,4 +1,4 @@
-
+## rdoc
 def get_movie_Ids
   imdbIdElement = 4 #strip the imDb ID from the movie's url
                     #(Haven't figured out another way of doing it yet)
@@ -7,6 +7,7 @@ def get_movie_Ids
     vid = line.split('/')
     imdbIdArray << vid[imdbIdElement]
   end
+  # no need for the return
   return imdbIdArray
 end
 

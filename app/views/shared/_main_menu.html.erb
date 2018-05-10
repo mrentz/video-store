@@ -1,0 +1,35 @@
+<div id="main-menu-container">
+  <div id="main-menu">
+    <%= menu menu_html: { class: 'pure-menu-horizontal pure-menu-scrollable' } do %>
+      <%= menu_item_and_link root_path do %>
+          <span class="fa fa-fw fa-home"></span> Dashboard
+      <% end %>
+
+      <% if can?(:read, Project) %>
+          <%= menu_item_and_link projects_path do %>
+            <span class="fa fa-files-o"></span> Projects
+          <% end %>
+      <% end %>
+
+      <% if current_project.present? %>
+          <% if can?(:read, Model) %>
+            <%= menu_item_and_link project_models_path(current_project) do %>
+              <span class="fa fa-file-text"></span> Models
+            <% end %>
+          <% end %>
+          <% if can?(:read, ControllerRecord) %>
+            <%= menu_item_and_link project_controller_records_path(current_project) do %>
+              <span class="fa fa-gamepad"></span> Controller Records
+            <% end %>
+          <% end %>
+      <% end %>
+
+      <% if can?(:update, User) %>
+        <%= menu_item_and_link users_path do %>
+          <span class="fa fa-users"></span> Users
+        <% end %>
+      <% end %>
+
+    <% end %>
+  </div>
+</div>

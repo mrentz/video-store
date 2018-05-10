@@ -24,6 +24,20 @@ gem 'elasticsearch-rails'
 gem 'devise',         '4.4.0'
 gem 'cancancan'
 
+# Admin theme + dependencies
+gem 'pure-admin-rails', github: 'blaknite/pure-admin-rails', branch: 'master'
+gem 'pure-css-reset-rails', github: 'blaknite/pure-css-reset-rails', branch: 'master'
+gem 'exo2-rails', github: 'blaknite/exo2-rails', branch: 'master'
+gem 'crummy', github: 'blaknite/crummy', branch: 'master'
+gem 'font-awesome-rails'
+gem 'select2-rails'
+gem 'pure-css-rails'
+gem 'simple_form'
+
+gem 'kaminari'
+gem 'has_scope'
+gem 'classy_enum'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-wait'

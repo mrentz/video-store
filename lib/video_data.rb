@@ -1,28 +1,30 @@
 require 'net/http'
 require 'json'
 
+# rdoc for all of these
 def apiTag(movie_id)
   f = (/^tt/.match(movie_id).nil? ? "t" : "i");
   api_tag = "http://www.omdbapi.com/?#{f}=#{movie_id}&apikey=da4134f5"
-end  
+end
 
 def poster(image)
-  image == "N/A" ? "noimage.png" : image  
+  image == "N/A" ? "noimage.png" : image
 end
 
 def rating(content = "N/A")
-  content == "N/A" ? "not-rated" : content  
+  content == "N/A" ? "not-rated" : content
 end
 
 def preprocess(content = "N/A")
-  content == "N/A" ? "no description available" : content  
+  content == "N/A" ? "no description available" : content
 end
 
 def movie_data(imdb_id)
 
   apiData = JSON.parse(Net::HTTP.get(URI(apiTag(imdb_id))))
 
-  movieDataHash = apiData["Response"] == "False" ? {title: "false"} : 
+  # doesn't look like this variable is ever being used no need to assign
+  movieDataHash = apiData["Response"] == "False" ? {title: "false"} :
                   {title:             apiData["Title"].to_s,
                    content_rating:    rating(apiData["Rated"]).to_s,
                    theme:             preprocess(apiData["Genre"]).to_s,

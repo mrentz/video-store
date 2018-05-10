@@ -4,6 +4,8 @@
  * Licensed under the MIT license
  */
 
+// Files like this that you download from somewhere else are kept in the vendor folder use assets for files you write yourself same for the others you have here
+
 if (typeof jQuery === 'undefined') {
   throw new Error('Bootstrap\'s JavaScript requires jQuery')
 }
