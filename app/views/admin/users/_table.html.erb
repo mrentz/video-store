@@ -1,0 +1,25 @@
+<table class="pure-table pure-table-striped pure-table-bordered">
+  <thead>
+    <tr>
+      <th>Role</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td>
+          <%= link_to user.role, admin_user_path(user) %>
+        </td>
+        <td>
+          <%= user.email %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="clear-fix">
+  <%# page_entries_info(@users) %>
+  <%= paginate(@users, remote: true) %>
+</div>

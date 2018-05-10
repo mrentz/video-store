@@ -6,7 +6,8 @@ class StaticPagesController < ApplicationController
 
 before_action :authenticate_user!, except: [:home, :contact, :about, :help]
 
-## rdoc for all of these when you're not using CRUD actions
+  ##
+  # Home page displays list of top 5 new releases
   def home
     @top5videos = Top5.data
   end

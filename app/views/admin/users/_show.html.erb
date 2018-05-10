@@ -1,0 +1,12 @@
+<%= portlet 'Details' do %>
+  <%= details_panel_for @user do |dp| %>
+    <%= dp.item :role %>
+    <%= dp.item :email %>
+  <% end %>
+
+  <%= details_panel_controls do %>
+    <%= edit_button(edit_admin_user_url(@user)) %>
+    <%= delete_button(@user) %>
+    <%= back_button %>
+  <% end %>
+<% end %>

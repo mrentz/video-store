@@ -53,4 +53,8 @@ Rails.application.routes.draw do
 
   resources :videos
 
+  namespace :admin do
+    resources :users
+  end
+
 end
